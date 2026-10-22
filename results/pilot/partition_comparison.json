@@ -1,0 +1,579 @@
+{
+  "measurement": "3_shape_vs_learned_partition",
+  "seed": 20261017,
+  "dataset": "LFW (funneled), identities with >= 2 images, via sklearn.datasets.fetch_lfw_people",
+  "dataset_limitations": "LFW is demographically skewed (predominantly male, lighter-skinned, middle-aged public figures) and consists of news photographs of public figures. This is acceptable for a pilot that asks whether the routing mechanism works at all. It is not acceptable for the fairness analysis in the paper, which requires a demographically balanced set.",
+  "router": {
+    "landmarks": {
+      "forehead_width": [
+        54,
+        284
+      ],
+      "cheekbone_width": [
+        234,
+        454
+      ],
+      "jaw_width": [
+        172,
+        397
+      ],
+      "face_length": [
+        10,
+        152
+      ],
+      "jaw_angle_left_vertex_ramus_chin": [
+        172,
+        234,
+        152
+      ],
+      "jaw_angle_right_vertex_ramus_chin": [
+        397,
+        454,
+        152
+      ]
+    },
+    "features": [
+      "L_length_over_cheek",
+      "F_forehead_over_cheek",
+      "J_jaw_over_cheek",
+      "A_jaw_angle_deg"
+    ],
+    "standardisation": "robust: (x - median) / (IQR / 1.349), statistics over all images with landmarks",
+    "prototypes": {
+      "oval": [
+        0.5,
+        0.5,
+        -0.5,
+        0.5
+      ],
+      "round": [
+        -1.0,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "square": [
+        -1.0,
+        0.0,
+        1.0,
+        -1.0
+      ],
+      "rectangle": [
+        1.5,
+        0.0,
+        0.5,
+        -1.0
+      ],
+      "heart": [
+        0.0,
+        1.5,
+        -1.5,
+        0.0
+      ],
+      "diamond": [
+        0.5,
+        -1.5,
+        -1.0,
+        0.0
+      ],
+      "triangle": [
+        0.0,
+        -1.5,
+        1.5,
+        0.0
+      ]
+    },
+    "prototype_width": 1.0,
+    "softmax_temperature": 1.0,
+    "trained_on_identity": false
+  },
+  "embedding": "InsightFace buffalo_l ArcFace R50 (WebFace600K), L2-normalised, 512-d",
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": null,
+      "torchvision": null
+    },
+    "utc_time": "2026-10-17T21:01:59+00:00"
+  },
+  "data_accounting": {
+    "lfw_images_ge2": 9164,
+    "lfw_identities_ge2": 1680,
+    "landmark_failed": 10,
+    "embedding_failed": 0,
+    "either_failed": 10,
+    "dropped_identity_below_2_after_failures_images": 3,
+    "analysis_images": 9151,
+    "analysis_identities": 1677
+  },
+  "split": {
+    "protocol": "one random probe per identity, all remaining images form the gallery",
+    "seed_stream": [
+      20261017,
+      3
+    ],
+    "n_probes": 1677,
+    "n_gallery": 7474,
+    "file": "partition_split.csv"
+  },
+  "kmeans": {
+    "k": 7,
+    "n_init": 10,
+    "random_state": 20261017,
+    "fit_on": "gallery embeddings only",
+    "inertia": 6593.247846948387
+  },
+  "partitions": {
+    "shape": {
+      "gallery_bucket_shares": [
+        0.30813486754080815,
+        0.11921327267861921,
+        0.2067166176077067,
+        0.07867273213807867,
+        0.09994648113459995,
+        0.07613058603157613,
+        0.11118544286861119
+      ],
+      "gallery_largest_bucket_share": 0.30813486754080815,
+      "curve": [
+        {
+          "buckets_probed": 1,
+          "routing_recall": 0.5354800238521169,
+          "routing_recall_ci95": {
+            "low": 0.5116279069767442,
+            "high": 0.5605247465712582
+          },
+          "routing_recall_per_mate": 0.3422596509840605,
+          "penetration": 0.18325687667156718,
+          "penetration_ci95": {
+            "low": 0.1788922269033943,
+            "high": 0.18770075558297977
+          }
+        },
+        {
+          "buckets_probed": 2,
+          "routing_recall": 0.7262969588550984,
+          "routing_recall_ci95": {
+            "low": 0.7030411449016101,
+            "high": 0.7465712581991651
+          },
+          "routing_recall_per_mate": 0.5478875197716024,
+          "penetration": 0.349172300588372,
+          "penetration_ci95": {
+            "low": 0.34555163325886334,
+            "high": 0.35311222614066284
+          }
+        },
+        {
+          "buckets_probed": 3,
+          "routing_recall": 0.8240906380441264,
+          "routing_recall_ci95": {
+            "low": 0.8049940369707812,
+            "high": 0.8419797257006559
+          },
+          "routing_recall_per_mate": 0.6783124588894194,
+          "penetration": 0.4823232963919121,
+          "penetration_ci95": {
+            "low": 0.47854344275021227,
+            "high": 0.4861729866478887
+          }
+        },
+        {
+          "buckets_probed": 4,
+          "routing_recall": 0.8831246273106739,
+          "routing_recall_ci95": {
+            "low": 0.8670244484197973,
+            "high": 0.8980322003577818
+          },
+          "routing_recall_per_mate": 0.7845329676721187,
+          "penetration": 0.6158196755709996,
+          "penetration_ci95": {
+            "low": 0.6117078063025564,
+            "high": 0.6201300026536039
+          }
+        },
+        {
+          "buckets_probed": 5,
+          "routing_recall": 0.9332140727489565,
+          "routing_recall_ci95": {
+            "low": 0.9212880143112702,
+            "high": 0.9439624329159213
+          },
+          "routing_recall_per_mate": 0.8761045297554737,
+          "penetration": 0.7540942969218367,
+          "penetration_ci95": {
+            "low": 0.7505587587357102,
+            "high": 0.7577118586731758
+          }
+        },
+        {
+          "buckets_probed": 6,
+          "routing_recall": 0.9743589743589743,
+          "routing_recall_ci95": {
+            "low": 0.9666070363744782,
+            "high": 0.9815146094215862
+          },
+          "routing_recall_per_mate": 0.9494175474545898,
+          "penetration": 0.8878190168772708,
+          "penetration_ci95": {
+            "low": 0.8860421434736424,
+            "high": 0.8894135766861992
+          }
+        },
+        {
+          "buckets_probed": 7,
+          "routing_recall": 1.0,
+          "routing_recall_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          },
+          "routing_recall_per_mate": 1.0,
+          "penetration": 1.0,
+          "penetration_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          }
+        }
+      ],
+      "auc_recall_vs_penetration": 0.7347750583868211,
+      "auc_ci95": {
+        "low": 0.7237045422185354,
+        "high": 0.7455929958177111
+      }
+    },
+    "kmeans": {
+      "gallery_bucket_shares": [
+        0.019132994380519134,
+        0.4397912764249398,
+        0.40848274016590846,
+        0.01592186245651592,
+        0.014450093658014451,
+        0.03144233342253144,
+        0.07077869949157078
+      ],
+      "gallery_largest_bucket_share": 0.4397912764249398,
+      "curve": [
+        {
+          "buckets_probed": 1,
+          "routing_recall": 0.8592725104353012,
+          "routing_recall_ci95": {
+            "low": 0.8419797257006559,
+            "high": 0.8753726893261777
+          },
+          "routing_recall_per_mate": 0.7919648614843513,
+          "penetration": 0.4224961779647474,
+          "penetration_ci95": {
+            "low": 0.42123904111873267,
+            "high": 0.4236282519612016
+          }
+        },
+        {
+          "buckets_probed": 2,
+          "routing_recall": 1.0,
+          "routing_recall_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          },
+          "routing_recall_per_mate": 1.0,
+          "penetration": 0.8471092552372695,
+          "penetration_ci95": {
+            "low": 0.8459769997330446,
+            "high": 0.8480418461998022
+          }
+        },
+        {
+          "buckets_probed": 3,
+          "routing_recall": 1.0,
+          "routing_recall_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          },
+          "routing_recall_per_mate": 1.0,
+          "penetration": 0.8777867826912262,
+          "penetration_ci95": {
+            "low": 0.876784424925111,
+            "high": 0.8787844950549301
+          }
+        },
+        {
+          "buckets_probed": 4,
+          "routing_recall": 1.0,
+          "routing_recall_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          },
+          "routing_recall_per_mate": 1.0,
+          "penetration": 0.9092382912323045,
+          "penetration_ci95": {
+            "low": 0.9079868090517411,
+            "high": 0.9104919475170453
+          }
+        },
+        {
+          "buckets_probed": 5,
+          "routing_recall": 1.0,
+          "routing_recall_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          },
+          "routing_recall_per_mate": 1.0,
+          "penetration": 0.939482593523578,
+          "penetration_ci95": {
+            "low": 0.9382744179025554,
+            "high": 0.9406783189076536
+          }
+        },
+        {
+          "buckets_probed": 6,
+          "routing_recall": 1.0,
+          "routing_recall_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          },
+          "routing_recall_per_mate": 1.0,
+          "penetration": 0.96996784240625,
+          "penetration_ci95": {
+            "low": 0.9690793518504778,
+            "high": 0.9707944029064222
+          }
+        },
+        {
+          "buckets_probed": 7,
+          "routing_recall": 1.0,
+          "routing_recall_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          },
+          "routing_recall_per_mate": 1.0,
+          "penetration": 1.0,
+          "penetration_ci95": {
+            "low": 1.0,
+            "high": 1.0
+          }
+        }
+      ],
+      "auc_recall_vs_penetration": 0.7291461315793449,
+      "auc_ci95": {
+        "low": 0.7217860955897653,
+        "high": 0.7361225233121236
+      }
+    }
+  },
+  "comparison": {
+    "auc_shape_minus_kmeans": 0.005628926807476176,
+    "auc_shape_minus_kmeans_ci95": {
+      "low": -0.007800729815547454,
+      "high": 0.01864931003955854
+    },
+    "matched_penetration": [
+      {
+        "buckets_probed_shape": 1,
+        "penetration": 0.18325687667156718,
+        "shape_recall": 0.5354800238521169,
+        "kmeans_recall_interpolated": 0.3727077419508605,
+        "shape_minus_kmeans": 0.16277228190125642
+      },
+      {
+        "buckets_probed_shape": 2,
+        "penetration": 0.349172300588372,
+        "shape_recall": 0.7262969588550984,
+        "kmeans_recall_interpolated": 0.7101464461675544,
+        "shape_minus_kmeans": 0.016150512687543972
+      },
+      {
+        "buckets_probed_shape": 3,
+        "penetration": 0.4823232963919121,
+        "shape_recall": 0.8240906380441264,
+        "kmeans_recall_interpolated": 0.8791007273103579,
+        "shape_minus_kmeans": -0.05501008926623152
+      },
+      {
+        "buckets_probed_shape": 4,
+        "penetration": 0.6158196755709996,
+        "shape_recall": 0.8831246273106739,
+        "kmeans_recall_interpolated": 0.9233447963544035,
+        "shape_minus_kmeans": -0.0402201690437296
+      },
+      {
+        "buckets_probed_shape": 5,
+        "penetration": 0.7540942969218367,
+        "shape_recall": 0.9332140727489565,
+        "kmeans_recall_interpolated": 0.9691724954403729,
+        "shape_minus_kmeans": -0.03595842269141636
+      },
+      {
+        "buckets_probed_shape": 6,
+        "penetration": 0.8878190168772708,
+        "shape_recall": 0.9743589743589743,
+        "kmeans_recall_interpolated": 1.0,
+        "shape_minus_kmeans": -0.02564102564102566
+      },
+      {
+        "buckets_probed_shape": 7,
+        "penetration": 1.0,
+        "shape_recall": 1.0,
+        "kmeans_recall_interpolated": 1.0,
+        "shape_minus_kmeans": 0.0
+      }
+    ],
+    "matched_penetration_at_kmeans_points": [
+      {
+        "buckets_probed_kmeans": 1,
+        "penetration": 0.4224961779647474,
+        "kmeans_recall": 0.8592725104353012,
+        "shape_recall_interpolated": 0.7801501929054159,
+        "shape_minus_kmeans": -0.0791223175298853
+      },
+      {
+        "buckets_probed_kmeans": 2,
+        "penetration": 0.8471092552372695,
+        "kmeans_recall": 1.0,
+        "shape_recall_interpolated": 0.9618332488401372,
+        "shape_minus_kmeans": -0.03816675115986279
+      },
+      {
+        "buckets_probed_kmeans": 3,
+        "penetration": 0.8777867826912262,
+        "kmeans_recall": 1.0,
+        "shape_recall_interpolated": 0.971272220551219,
+        "shape_minus_kmeans": -0.02872777944878102
+      },
+      {
+        "buckets_probed_kmeans": 4,
+        "penetration": 0.9092382912323045,
+        "kmeans_recall": 1.0,
+        "shape_recall_interpolated": 0.9792547432108905,
+        "shape_minus_kmeans": -0.020745256789109545
+      },
+      {
+        "buckets_probed_kmeans": 5,
+        "penetration": 0.939482593523578,
+        "kmeans_recall": 1.0,
+        "shape_recall_interpolated": 0.9861676344065137,
+        "shape_minus_kmeans": -0.013832365593486329
+      },
+      {
+        "buckets_probed_kmeans": 6,
+        "penetration": 0.96996784240625,
+        "kmeans_recall": 1.0,
+        "shape_recall_interpolated": 0.9931355983743323,
+        "shape_minus_kmeans": -0.006864401625667704
+      },
+      {
+        "buckets_probed_kmeans": 7,
+        "penetration": 1.0,
+        "kmeans_recall": 1.0,
+        "shape_recall_interpolated": 1.0,
+        "shape_minus_kmeans": 0.0
+      }
+    ],
+    "random_partition_auc": 0.5,
+    "notes": [
+      "The AUC joins (0, 0) to each partition's first operating point by a straight line. If one partition's first point lies at high penetration (unbalanced buckets), the AUC credits it only with that interpolated segment, so the AUC difference should be read together with both matched-penetration tables, which compare the curves at each partition's real operating points."
+    ]
+  },
+  "linear_probe": {
+    "target": "router top-1 shape (not a human label)",
+    "model": "StandardScaler + multinomial LogisticRegression(C=1.0, class_weight='balanced')",
+    "split": {
+      "method": "GroupShuffleSplit by identity",
+      "test_fraction_of_identities": 0.3,
+      "random_state": 20261017,
+      "n_train_images": 5710,
+      "n_test_images": 3441,
+      "n_train_identities": 1173,
+      "n_test_identities": 504,
+      "file": "linear_probe_split.csv"
+    },
+    "balanced_accuracy": 0.24922950561581372,
+    "chance_balanced_accuracy": 0.14285714285714285,
+    "shuffled_label_control_balanced_accuracy": 0.1468931138105105,
+    "per_class_recall": {
+      "oval": 0.18440366972477065,
+      "round": 0.25307125307125306,
+      "square": 0.2931547619047619,
+      "rectangle": 0.26394052044609667,
+      "heart": 0.17325227963525835,
+      "diamond": 0.2608695652173913,
+      "triangle": 0.3159144893111639
+    },
+    "confusion_test_rows_true_cols_pred": [
+      [
+        201,
+        175,
+        128,
+        129,
+        152,
+        198,
+        107
+      ],
+      [
+        44,
+        103,
+        49,
+        22,
+        57,
+        75,
+        57
+      ],
+      [
+        54,
+        103,
+        197,
+        76,
+        87,
+        74,
+        81
+      ],
+      [
+        35,
+        35,
+        46,
+        71,
+        28,
+        29,
+        25
+      ],
+      [
+        28,
+        88,
+        55,
+        27,
+        57,
+        51,
+        23
+      ],
+      [
+        33,
+        24,
+        25,
+        40,
+        22,
+        66,
+        43
+      ],
+      [
+        27,
+        38,
+        42,
+        55,
+        21,
+        105,
+        133
+      ]
+    ],
+    "notes": [
+      "The target is the router's own output. If the router is inconsistent across images of one person, an identity-centred embedding cannot predict it well even if shape is encoded, so read this together with p_top1."
+    ]
+  }
+}

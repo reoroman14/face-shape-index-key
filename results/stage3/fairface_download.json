@@ -1,0 +1,73 @@
+{
+  "dataset": "FairFace (Karkkainen and Joo, WACV 2021)",
+  "source": "https://huggingface.co/datasets/HuggingFaceM4/FairFace",
+  "revision": "54d573cdb8b5af490ba8da9da2799628f6e5c496",
+  "padding": "1.25",
+  "license": "CC BY 4.0 (dataset card)",
+  "shards": [
+    {
+      "path": "1.25/train-00000-of-00004-e715178553977907.parquet",
+      "size": 467720349,
+      "sha256": "9c27e70f0cf6f1ba54e5d7fcc7c69bd5b1c8342205796e9a9bb8f507125ef70c",
+      "verified_sha256": true
+    },
+    {
+      "path": "1.25/train-00001-of-00004-f38b58e3987f3fbf.parquet",
+      "size": 465770326,
+      "sha256": "fa253c53b3bee4a784314963e5579fa90ae7422a4990f72c4f2458b3e4e51692",
+      "verified_sha256": true
+    },
+    {
+      "path": "1.25/train-00002-of-00004-239e931aa9c3b3e6.parquet",
+      "size": 466479874,
+      "sha256": "ad65e7e2f34faf35cf5741a91f55397a9df0544df567bd1f7388d60dfe86dcf8",
+      "verified_sha256": true
+    },
+    {
+      "path": "1.25/train-00003-of-00004-847c279691a19548.parquet",
+      "size": 467699600,
+      "sha256": "caf5e1f5982d0206e7d3f48fff89c74740eeb3a57aebceef59fd6fc68a9ea7c2",
+      "verified_sha256": true
+    },
+    {
+      "path": "1.25/validation-00000-of-00001-09e3e67bb00ab4ec.parquet",
+      "size": 236824583,
+      "sha256": "ce47863c011f355ef7ab63d70420d9d4b36fce03cf1621a26597955da21968bb",
+      "verified_sha256": true
+    }
+  ],
+  "total_bytes": 2104494732,
+  "n_images": 97698,
+  "n_by_split": {
+    "train": 86744,
+    "validation": 10954
+  },
+  "note": "The public release contains train and validation only; the 108,501 in the paper include images that were not released.",
+  "label_definitions": {
+    "race": [
+      "East Asian",
+      "Indian",
+      "Black",
+      "White",
+      "Middle Eastern",
+      "Latino_Hispanic",
+      "Southeast Asian"
+    ],
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "age": [
+      "0-2",
+      "3-9",
+      "10-19",
+      "20-29",
+      "30-39",
+      "40-49",
+      "50-59",
+      "60-69",
+      "more than 70"
+    ]
+  },
+  "label_provenance": "annotator-perceived labels (Amazon Mechanical Turk), not self-identification"
+}

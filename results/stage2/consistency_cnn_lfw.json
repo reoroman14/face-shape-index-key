@@ -1,0 +1,269 @@
+{
+  "seed": 20261017,
+  "router": {
+    "backbone": "resnet50",
+    "classes": [
+      "heart",
+      "oblong",
+      "oval",
+      "round",
+      "square"
+    ],
+    "model_file": "results/stage2/cache/cnn_resnet50.pt",
+    "detector_providers_in_use": "{'detection': ['CUDAExecutionProvider', 'CPUExecutionProvider'], 'recognition': ['CUDAExecutionProvider', 'CPUExecutionProvider']}",
+    "preprocessing": "same SCRFD crop rule as Kaggle training (faces.py)"
+  },
+  "data_accounting": {
+    "lfw_images_ge2": 9164,
+    "lfw_identities_ge2": 1680,
+    "landmark_failed": 10,
+    "embedding_failed": 0,
+    "either_failed": 10,
+    "dropped_identity_below_2_after_failures_images": 3,
+    "analysis_images": 9151,
+    "analysis_identities": 1677
+  },
+  "pairing": "identical to stage 1: m1_consistency.sample_pairs with the same seed over the same analysis set",
+  "lfw_top1_distribution": {
+    "heart": 0.009070046989400065,
+    "oblong": 0.7039667795869304,
+    "oval": 0.014533930717954321,
+    "round": 0.18304010490656758,
+    "square": 0.08938913779914763
+  },
+  "comparison_table": [
+    {
+      "router": "geometric (stage 1)",
+      "classes": 7,
+      "own_test_accuracy": null,
+      "own_test_accuracy_note": "not applicable (rule-based, no labelled test set)",
+      "p_top1": 0.32718168812589415,
+      "chance": 0.18518417324429462,
+      "kappa": 0.17710068933462547,
+      "kappa_ci95": {
+        "low": 0.16082034081997554,
+        "high": 0.19326663634085975
+      },
+      "source": "results/pilot/consistency.json"
+    },
+    {
+      "router": "CNN (resnet50, Kaggle-trained)",
+      "classes": 5,
+      "own_test_accuracy": 0.906,
+      "own_test_accuracy_counting_detection_failures_as_wrong": 0.906,
+      "p_top1": 0.6244635193133047,
+      "chance": 0.5373568256171803,
+      "kappa": 0.2555825225239661,
+      "kappa_ci95": {
+        "low": 0.23002492812988445,
+        "high": 0.2808956075728693
+      },
+      "source": "results/stage2/consistency_cnn_lfw.json"
+    }
+  ],
+  "n_identities": 1677,
+  "n_unordered_pairs": 6990,
+  "n_ordered_pairs": 13980,
+  "max_pairs_per_identity": 10,
+  "p_top1": 0.6244635193133047,
+  "p_top1_ci95": {
+    "low": 0.6049574666480533,
+    "high": 0.6443245383141915
+  },
+  "cohen_kappa_top1": 0.2555825225239661,
+  "cohen_kappa_top1_ci95": {
+    "low": 0.23002492812988445,
+    "high": 0.2808956075728693
+  },
+  "chance_agreement_from_marginals": 0.5373568256171803,
+  "multi_probe": [
+    {
+      "k": 1,
+      "p_topk": 0.6244635193133047,
+      "p_topk_ci95": {
+        "low": 0.6049574666480533,
+        "high": 0.6443245383141915
+      },
+      "mean_classes_searched": 1.0,
+      "mean_gallery_fraction_searched": 0.515383998465423,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.5041161179181518,
+        "high": 0.5273244018489777
+      }
+    },
+    {
+      "k": 2,
+      "p_topk": 0.8413447782546495,
+      "p_topk_ci95": {
+        "low": 0.8296363578937366,
+        "high": 0.8534771590048243
+      },
+      "mean_classes_searched": 2.0,
+      "mean_gallery_fraction_searched": 0.7630770044910155,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.7539855549943265,
+        "high": 0.7719504325565794
+      }
+    },
+    {
+      "k": 3,
+      "p_topk": 0.9482117310443491,
+      "p_topk_ci95": {
+        "low": 0.9416783644284668,
+        "high": 0.9546596908812864
+      },
+      "mean_classes_searched": 3.0,
+      "mean_gallery_fraction_searched": 0.9082652692881744,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.9021439650049201,
+        "high": 0.9144531657709495
+      }
+    },
+    {
+      "k": 4,
+      "p_topk": 0.9837625178826895,
+      "p_topk_ci95": {
+        "low": 0.9804470431438204,
+        "high": 0.9867571520842492
+      },
+      "mean_classes_searched": 4.0,
+      "mean_gallery_fraction_searched": 0.96808206268724,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.9646851311328423,
+        "high": 0.9712771708012695
+      }
+    },
+    {
+      "k": 5,
+      "p_topk": 1.0,
+      "p_topk_ci95": {
+        "low": 1.0,
+        "high": 1.0
+      },
+      "mean_classes_searched": 5.0,
+      "mean_gallery_fraction_searched": 1.0,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 1.0,
+        "high": 1.0
+      }
+    }
+  ],
+  "per_class": {
+    "heart": {
+      "n_ordered_pairs_with_probe_in_class": 161,
+      "p_top1_given_probe_class": 0.14906832298136646,
+      "ci95": {
+        "low": 0.07206883142134941,
+        "high": 0.22898545401116654
+      },
+      "share_of_images": 0.009070046989400065
+    },
+    "oblong": {
+      "n_ordered_pairs_with_probe_in_class": 9304,
+      "p_top1_given_probe_class": 0.7775150472914876,
+      "ci95": {
+        "low": 0.7607805979804316,
+        "high": 0.7930490414518958
+      },
+      "share_of_images": 0.7039667795869304
+    },
+    "oval": {
+      "n_ordered_pairs_with_probe_in_class": 268,
+      "p_top1_given_probe_class": 0.20149253731343283,
+      "ci95": {
+        "low": 0.12986224302013774,
+        "high": 0.27077083333333335
+      },
+      "share_of_images": 0.014533930717954321
+    },
+    "round": {
+      "n_ordered_pairs_with_probe_in_class": 2887,
+      "p_top1_given_probe_class": 0.3858676827156218,
+      "ci95": {
+        "low": 0.35483170720321183,
+        "high": 0.4188941254408462
+      },
+      "share_of_images": 0.18304010490656758
+    },
+    "square": {
+      "n_ordered_pairs_with_probe_in_class": 1360,
+      "p_top1_given_probe_class": 0.2235294117647059,
+      "ci95": {
+        "low": 0.18501368176934657,
+        "high": 0.25959587085801084
+      },
+      "share_of_images": 0.08938913779914763
+    }
+  },
+  "pair_confusion_ordered": {
+    "classes": [
+      "heart",
+      "oblong",
+      "oval",
+      "round",
+      "square"
+    ],
+    "rows_probe_cols_gallery": [
+      [
+        24,
+        59,
+        7,
+        50,
+        21
+      ],
+      [
+        59,
+        7234,
+        81,
+        1299,
+        631
+      ],
+      [
+        7,
+        81,
+        54,
+        73,
+        53
+      ],
+      [
+        50,
+        1299,
+        73,
+        1114,
+        351
+      ],
+      [
+        21,
+        631,
+        53,
+        351,
+        304
+      ]
+    ]
+  },
+  "notes": [
+    "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+    "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+    "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+    "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+  ],
+  "probabilities_file": "lfw_cnn_probs.csv",
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130"
+    },
+    "utc_time": "2026-10-18T00:19:00+00:00"
+  }
+}

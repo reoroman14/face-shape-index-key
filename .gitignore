@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------------------
+# Datasets are never redistributed from this repository.
+# LFW downloads itself, FairFace comes from Hugging Face, the Kaggle corpus
+# from Kaggle, and RFW is obtained directly from its authors. See README.
+# ---------------------------------------------------------------------------
+data/
+
+# ---------------------------------------------------------------------------
+# Downloaded model weights: 633 MB, and three single files exceed GitHub's
+# 100 MB limit. The pipeline fetches them from their own sources on first run.
+# ---------------------------------------------------------------------------
+models/
+
+# ---------------------------------------------------------------------------
+# Cached intermediates: large, and regenerable from the entry points in README.
+# ---------------------------------------------------------------------------
+results/*/cache/
+results/stage2/step0_cpu_reference/
+*.npz
+*.npy
+*.pt
+*.pth
+*.onnx
+*.task
+
+# Two per-image dumps too large to version; rerunning their stage remakes them.
+results/stage3/fairface_router_outputs.csv
+results/stage2/perturbation_params.csv
+
+# ---------------------------------------------------------------------------
+# The manuscript and the submission paperwork are not part of the code release.
+# ---------------------------------------------------------------------------
+main.tex
+references.bib
+cover_letter_TBIOM.md
+IEEEtran.cls
+IEEEtran.bst
+*.pdf
+*.zip
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+
+# ---------------------------------------------------------------------------
+# Environment, IDE and build artefacts
+# ---------------------------------------------------------------------------
+.venv/
+.idea/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+/main.py

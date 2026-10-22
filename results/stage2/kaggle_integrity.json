@@ -1,0 +1,256 @@
+{
+  "archive_sha256": "4b0c3f42f8f02ac0dda5d7b332394240d50ae9d440fea424ce953681dd025efe",
+  "n_images_decoded": 4998,
+  "decode_failed": [
+    "extracted/FaceShape Dataset/training_set/Heart/heart (633).jpg",
+    "extracted/FaceShape Dataset/training_set/Square/square (84).jpg"
+  ],
+  "counts": {
+    "train": {
+      "heart": 799,
+      "oblong": 800,
+      "oval": 800,
+      "round": 800,
+      "square": 799
+    },
+    "test": {
+      "heart": 200,
+      "oblong": 200,
+      "oval": 200,
+      "round": 200,
+      "square": 200
+    }
+  },
+  "image_modes": {
+    "RGB": 4989,
+    "P": 1,
+    "L": 1,
+    "RGBA": 7
+  },
+  "image_size_px": {
+    "width_min": 101,
+    "width_median": 450.0,
+    "width_max": 6659,
+    "height_min": 131,
+    "height_median": 577.5,
+    "height_max": 9999
+  },
+  "exact_duplicates": {
+    "n_groups": 4,
+    "by_split": {
+      "train-test": 0,
+      "within-train": 4,
+      "within-test": 0
+    },
+    "groups_with_conflicting_labels": 0,
+    "groups": [
+      [
+        "extracted/FaceShape Dataset/training_set/Heart/heart (179).jpg",
+        "extracted/FaceShape Dataset/training_set/Heart/heart (545).jpg"
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (635).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (639).jpg"
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (480).jpg",
+        "extracted/FaceShape Dataset/training_set/Oval/oval (584).jpg"
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (672).jpg",
+        "extracted/FaceShape Dataset/training_set/Oval/oval (721).jpg"
+      ]
+    ]
+  },
+  "near_duplicates": {
+    "method": "dHash Hamming <= threshold as candidate, confirmed by 64x64 greyscale NCC >= ncc_threshold",
+    "hamming_threshold": 10,
+    "ncc_threshold": 0.97,
+    "n_candidate_pairs": 26396,
+    "note": "Confirmed pairs were inspected visually and are true duplicates. NCC on full-frame thumbnails misses duplicates that were re-cropped or re-scaled, so counts are a lower bound.",
+    "n_pairs": 33,
+    "n_train_test_pairs": 11,
+    "n_test_images_with_a_train_near_duplicate": 10,
+    "n_test_images": 1000,
+    "n_pairs_with_conflicting_labels": 2,
+    "pairs": [
+      [
+        "extracted/FaceShape Dataset/training_set/Heart/heart (179).jpg",
+        "extracted/FaceShape Dataset/training_set/Heart/heart (545).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (153).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oblong/oblong (144).jpg",
+        0.9911
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (2).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (229).jpg",
+        0.9881
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (239).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (744).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (270).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (718).jpg",
+        0.9881
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (270).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oblong/oblong (706).jpg",
+        0.9881
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (283).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oblong/oblong (322).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (341).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (980).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (372).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (99).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (388).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (464).jpg",
+        0.9808
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (5).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (88).jpg",
+        0.9834
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (635).jpg",
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (639).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oblong/oblong (718).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oblong/oblong (706).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (480).jpg",
+        "extracted/FaceShape Dataset/training_set/Oval/oval (584).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (669).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oval/oval (675).jpg",
+        0.9999
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (672).jpg",
+        "extracted/FaceShape Dataset/training_set/Oval/oval (721).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (685).jpg",
+        "extracted/FaceShape Dataset/training_set/Oval/oval (739).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (706).jpg",
+        "extracted/FaceShape Dataset/training_set/Oval/oval (920).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (749).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oval/oval (690).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Oval/oval (751).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oval/oval (698).jpg",
+        0.9961
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Round/round (218).jpg",
+        "extracted/FaceShape Dataset/testing_set/Round/round (996).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Round/round (305).jpg",
+        "extracted/FaceShape Dataset/training_set/Round/round (619).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Round/round (419).jpg",
+        "extracted/FaceShape Dataset/training_set/Square/square (632).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Round/round (615).jpg",
+        "extracted/FaceShape Dataset/training_set/Round/round (677).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Round/round (638).jpg",
+        "extracted/FaceShape Dataset/training_set/Round/round (832).jpg",
+        0.9903
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Round/round (646).jpg",
+        "extracted/FaceShape Dataset/training_set/Round/round (672).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Round/round (650).jpg",
+        "extracted/FaceShape Dataset/testing_set/Round/round (600).jpg",
+        0.9919
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Square/square (263).jpg",
+        "extracted/FaceShape Dataset/testing_set/Square/square (685).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Square/square (350).jpg",
+        "extracted/FaceShape Dataset/training_set/Square/square (351).jpg",
+        0.9917
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Square/square (628).jpg",
+        "extracted/FaceShape Dataset/training_set/Square/square (644).jpg",
+        0.9751
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Square/square (650).jpg",
+        "extracted/FaceShape Dataset/testing_set/Square/square (629).jpg",
+        1.0
+      ],
+      [
+        "extracted/FaceShape Dataset/training_set/Square/square (652).jpg",
+        "extracted/FaceShape Dataset/training_set/Square/square (952).jpg",
+        0.9998
+      ],
+      [
+        "extracted/FaceShape Dataset/testing_set/Oblong/oblong (550).jpg",
+        "extracted/FaceShape Dataset/testing_set/Oval/oval (418).jpg",
+        0.9989
+      ]
+    ]
+  },
+  "test_images_with_train_near_duplicate": [
+    "extracted/FaceShape Dataset/testing_set/Oblong/oblong (144).jpg",
+    "extracted/FaceShape Dataset/testing_set/Oblong/oblong (322).jpg",
+    "extracted/FaceShape Dataset/testing_set/Oblong/oblong (706).jpg",
+    "extracted/FaceShape Dataset/testing_set/Oval/oval (675).jpg",
+    "extracted/FaceShape Dataset/testing_set/Oval/oval (690).jpg",
+    "extracted/FaceShape Dataset/testing_set/Oval/oval (698).jpg",
+    "extracted/FaceShape Dataset/testing_set/Round/round (600).jpg",
+    "extracted/FaceShape Dataset/testing_set/Round/round (996).jpg",
+    "extracted/FaceShape Dataset/testing_set/Square/square (629).jpg",
+    "extracted/FaceShape Dataset/testing_set/Square/square (685).jpg"
+  ]
+}

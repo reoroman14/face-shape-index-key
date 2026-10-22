@@ -1,0 +1,132 @@
+{
+  "step": "0",
+  "seed": 20261017,
+  "description": "MediaPipe landmark detection on the first 200 images of each RFW group (enumeration order: identity folder, then file name), stage 1 detector unchanged",
+  "provenance": {
+    "source_dataset": "RFW (Racial Faces in-the-Wild), test subsets only",
+    "derived_from": "MS-Celeb-1M, withdrawn by its creator (Microsoft) in April 2019",
+    "access": "granted in writing by Mei Wang (Beijing University of Posts and Telecommunications) on 2026-10-20, in response to a request from Applied Science Private University",
+    "obtained_from": "the Google Drive link supplied by the maintainer, not a mirror",
+    "downloaded": "the four test subsets only (Caucasian, Asian, Indian, African); the MS1M-wo-RFW and BUPT training sets distributed alongside them were not downloaded",
+    "verification": "unpacked tree verified file by file against the official counts (40,607 images, 11,429 identities) before use; re-verified by faceshape_pilot.stage4.rfw on every run",
+    "maintainer_readme": "data/rfw/readme.txt",
+    "maintainer_readme_sha256": "fbfa5fe0759b76ebb6e5455a93ba965c41f647bd56101df6f85eb1fe776c0be2"
+  },
+  "rfw_counts_verified": {
+    "Caucasian": {
+      "images": 10196,
+      "identities": 2958,
+      "identities_ge2": 2958,
+      "empty_folders_skipped": [
+        "Caucasian/m.0g5ty_"
+      ]
+    },
+    "Asian": {
+      "images": 9688,
+      "identities": 2492,
+      "identities_ge2": 2492,
+      "empty_folders_skipped": []
+    },
+    "Indian": {
+      "images": 10308,
+      "identities": 2984,
+      "identities_ge2": 2984,
+      "empty_folders_skipped": []
+    },
+    "African": {
+      "images": 10415,
+      "identities": 2995,
+      "identities_ge2": 2995,
+      "empty_folders_skipped": []
+    }
+  },
+  "image_sizes": [
+    "400x400"
+  ],
+  "groups": {
+    "Caucasian": {
+      "n_images": 200,
+      "n_identities_covered": 61,
+      "n_decoded": 200,
+      "n_landmark_ok": 195,
+      "detection_rate": 0.975,
+      "detection_rate_ci95_wilson": [
+        0.942821659593358,
+        0.9892752803482386
+      ],
+      "first_path": "rfw/images/data/Caucasian/m.011_2h/m.011_2h_0001.jpg",
+      "last_path": "rfw/images/data/Caucasian/m.019l9q/m.019l9q_0003.jpg"
+    },
+    "Asian": {
+      "n_images": 200,
+      "n_identities_covered": 53,
+      "n_decoded": 200,
+      "n_landmark_ok": 195,
+      "detection_rate": 0.975,
+      "detection_rate_ci95_wilson": [
+        0.942821659593358,
+        0.9892752803482386
+      ],
+      "first_path": "rfw/images/data/Asian/m.0112yl/m.0112yl_0001.jpg",
+      "last_path": "rfw/images/data/Asian/m.01bsgq/m.01bsgq_0003.jpg"
+    },
+    "Indian": {
+      "n_images": 200,
+      "n_identities_covered": 59,
+      "n_decoded": 200,
+      "n_landmark_ok": 198,
+      "detection_rate": 0.99,
+      "detection_rate_ci95_wilson": [
+        0.9642782382838231,
+        0.9972533418664555
+      ],
+      "first_path": "rfw/images/data/Indian/m.010g87/m.010g87_0001.jpg",
+      "last_path": "rfw/images/data/Indian/m.01pk4x/m.01pk4x_0002.jpg"
+    },
+    "African": {
+      "n_images": 200,
+      "n_identities_covered": 61,
+      "n_decoded": 200,
+      "n_landmark_ok": 198,
+      "detection_rate": 0.99,
+      "detection_rate_ci95_wilson": [
+        0.9642782382838231,
+        0.9972533418664555
+      ],
+      "first_path": "rfw/images/data/African/m.010lz5/m.010lz5_0001.jpg",
+      "last_path": "rfw/images/data/African/m.01kcx_w/m.01kcx_w_0002.jpg"
+    }
+  },
+  "pooled": {
+    "n_images": 800,
+    "n_landmark_ok": 786,
+    "detection_rate": 0.9825
+  },
+  "lfw_reference": {
+    "n_landmark_ok": 9154,
+    "n_images": 9164,
+    "rate": 0.9989087734613706,
+    "source": "results/pilot/cache/router_meta.json"
+  },
+  "mediapipe_model_sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+  "seconds": 8.9,
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130",
+      "pyarrow": "26.0.0"
+    },
+    "utc_time": "2026-10-21T21:38:12+00:00"
+  }
+}

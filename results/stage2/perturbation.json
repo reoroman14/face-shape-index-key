@@ -1,0 +1,378 @@
+{
+  "seed": 20261017,
+  "random_stream": [
+    20261017,
+    8,
+    "image",
+    "strength x 100",
+    "copy"
+  ],
+  "router": {
+    "backbone": "resnet50",
+    "model_file": "results/stage2/cache/cnn_resnet50.pt"
+  },
+  "detector_providers_in_use": {
+    "detection": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "recognition": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "images": {
+    "kaggle_test_total": 1000,
+    "used": 1000,
+    "excluded": {
+      "no_face_clean": 0,
+      "no_landmarks_clean": 0
+    }
+  },
+  "clean_predictions_match_step1": true,
+  "clean_accuracy_on_used_images": 0.906,
+  "parameters_at_strength_1": {
+    "yaw_deg_max_abs": 15.0,
+    "pitch_deg_max_abs": 10.0,
+    "pose_model": "planar face 0.15 m wide at 1.0 m, rotated about its centre",
+    "jaw_drop_max_fraction_of_face_height": 0.04,
+    "mouth_corner_max_abs_fraction_of_face_height": 0.03,
+    "mouth_corner_sigma_fraction_of_face_width": 0.07,
+    "lighting_gradient_max_abs": 0.25,
+    "brightness_max_abs": 0.2,
+    "contrast_factor_range": [
+      0.8,
+      1.25
+    ],
+    "gamma_range": [
+      0.8,
+      1.25
+    ],
+    "crop_shift_max_abs_fraction_of_side": 0.04,
+    "crop_scale_max_abs": 0.05,
+    "sampling": "each parameter uniform in [-s, s] x max (jaw drop in [0, s x max]; contrast and gamma uniform in log space); gradient direction uniform in [0, 360) at every s > 0",
+    "order": "expression -> pose -> lighting -> SCRFD re-detection -> crop jitter"
+  },
+  "strengths": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "copies_per_image_per_condition": 10,
+  "conditions": {
+    "strength_0.00": {
+      "strength": 0.0,
+      "single_factor": null,
+      "survival": 1.0,
+      "survival_ci95": {
+        "low": 1.0,
+        "high": 1.0
+      },
+      "accuracy": 0.906,
+      "accuracy_ci95": {
+        "low": 0.888,
+        "high": 0.924
+      },
+      "pair_agreement": 1.0,
+      "pair_agreement_ci95": {
+        "low": 1.0,
+        "high": 1.0
+      },
+      "pair_kappa": 1.0,
+      "pair_kappa_ci95": {
+        "low": 1.0,
+        "high": 1.0
+      },
+      "pair_chance_agreement": 0.200502,
+      "pair_chance_agreement_ci95": {
+        "low": 0.200164,
+        "high": 0.20321440000000002
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "strength_0.25": {
+      "strength": 0.25,
+      "single_factor": null,
+      "survival": 0.9667,
+      "survival_ci95": {
+        "low": 0.9588,
+        "high": 0.9746
+      },
+      "accuracy": 0.9062,
+      "accuracy_ci95": {
+        "low": 0.8904875,
+        "high": 0.9229075
+      },
+      "pair_agreement": 0.9606,
+      "pair_agreement_ci95": {
+        "low": 0.951595,
+        "high": 0.9692
+      },
+      "pair_kappa": 0.9507266222459246,
+      "pair_kappa_ci95": {
+        "low": 0.9394631768068055,
+        "high": 0.9614523411107484
+      },
+      "pair_chance_agreement": 0.20037956,
+      "pair_chance_agreement_ci95": {
+        "low": 0.2001656085,
+        "high": 0.2029395005
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "strength_0.50": {
+      "strength": 0.5,
+      "single_factor": null,
+      "survival": 0.9499,
+      "survival_ci95": {
+        "low": 0.9403975,
+        "high": 0.9596025
+      },
+      "accuracy": 0.9015,
+      "accuracy_ci95": {
+        "low": 0.8858,
+        "high": 0.9188025
+      },
+      "pair_agreement": 0.9484,
+      "pair_agreement_ci95": {
+        "low": 0.9391900000000001,
+        "high": 0.9576
+      },
+      "pair_kappa": 0.9354712024108559,
+      "pair_kappa_ci95": {
+        "low": 0.9238220732410094,
+        "high": 0.946889907097557
+      },
+      "pair_chance_agreement": 0.20035702,
+      "pair_chance_agreement_ci95": {
+        "low": 0.200170027,
+        "high": 0.20291394699999998
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "strength_0.75": {
+      "strength": 0.75,
+      "single_factor": null,
+      "survival": 0.9365,
+      "survival_ci95": {
+        "low": 0.9258974999999999,
+        "high": 0.9474
+      },
+      "accuracy": 0.8888,
+      "accuracy_ci95": {
+        "low": 0.8721,
+        "high": 0.906015
+      },
+      "pair_agreement": 0.9366,
+      "pair_agreement_ci95": {
+        "low": 0.926,
+        "high": 0.9464
+      },
+      "pair_kappa": 0.9206981822097103,
+      "pair_kappa_ci95": {
+        "low": 0.9074782213599871,
+        "high": 0.9329331019012881
+      },
+      "pair_chance_agreement": 0.20052274,
+      "pair_chance_agreement_ci95": {
+        "low": 0.200179889,
+        "high": 0.20320814399999998
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "strength_1.00": {
+      "strength": 1.0,
+      "single_factor": null,
+      "survival": 0.9154,
+      "survival_ci95": {
+        "low": 0.903295,
+        "high": 0.9277
+      },
+      "accuracy": 0.8768,
+      "accuracy_ci95": {
+        "low": 0.8609,
+        "high": 0.8942074999999999
+      },
+      "pair_agreement": 0.9102,
+      "pair_agreement_ci95": {
+        "low": 0.898,
+        "high": 0.922805
+      },
+      "pair_kappa": 0.887550768073334,
+      "pair_kappa_ci95": {
+        "low": 0.8722143218905112,
+        "high": 0.9030722481091076
+      },
+      "pair_chance_agreement": 0.2014174,
+      "pair_chance_agreement_ci95": {
+        "low": 0.2004264775,
+        "high": 0.20482649
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "only_pose_strength_1.00": {
+      "strength": 1.0,
+      "single_factor": "pose",
+      "survival": 0.9673,
+      "survival_ci95": {
+        "low": 0.9589,
+        "high": 0.9755025
+      },
+      "accuracy": 0.9018,
+      "accuracy_ci95": {
+        "low": 0.8852,
+        "high": 0.9196025
+      },
+      "pair_agreement": 0.9648,
+      "pair_agreement_ci95": {
+        "low": 0.9562,
+        "high": 0.973005
+      },
+      "pair_kappa": 0.9559793113768643,
+      "pair_kappa_ci95": {
+        "low": 0.9452076005379731,
+        "high": 0.9662036073813545
+      },
+      "pair_chance_agreement": 0.20037598,
+      "pair_chance_agreement_ci95": {
+        "low": 0.20017194449999998,
+        "high": 0.20302811999999998
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "only_expression_strength_1.00": {
+      "strength": 1.0,
+      "single_factor": "expression",
+      "survival": 0.9593,
+      "survival_ci95": {
+        "low": 0.9495975,
+        "high": 0.9689
+      },
+      "accuracy": 0.896,
+      "accuracy_ci95": {
+        "low": 0.8785975,
+        "high": 0.9145099999999999
+      },
+      "pair_agreement": 0.9662,
+      "pair_agreement_ci95": {
+        "low": 0.958795,
+        "high": 0.9736
+      },
+      "pair_kappa": 0.9577169526272495,
+      "pair_kappa_ci95": {
+        "low": 0.9483905403616154,
+        "high": 0.9669447189901098
+      },
+      "pair_chance_agreement": 0.20062526,
+      "pair_chance_agreement_ci95": {
+        "low": 0.2002455795,
+        "high": 0.20339989649999998
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "only_lighting_strength_1.00": {
+      "strength": 1.0,
+      "single_factor": "lighting",
+      "survival": 0.9723,
+      "survival_ci95": {
+        "low": 0.9657,
+        "high": 0.9784
+      },
+      "accuracy": 0.901,
+      "accuracy_ci95": {
+        "low": 0.8844925,
+        "high": 0.9185025
+      },
+      "pair_agreement": 0.962,
+      "pair_agreement_ci95": {
+        "low": 0.9534,
+        "high": 0.9702
+      },
+      "pair_kappa": 0.9524786439025698,
+      "pair_kappa_ci95": {
+        "low": 0.9416825229365575,
+        "high": 0.9626273741158455
+      },
+      "pair_chance_agreement": 0.20035952,
+      "pair_chance_agreement_ci95": {
+        "low": 0.2001184175,
+        "high": 0.2029411435
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    },
+    "only_crop_strength_1.00": {
+      "strength": 1.0,
+      "single_factor": "crop",
+      "survival": 0.9448,
+      "survival_ci95": {
+        "low": 0.9333,
+        "high": 0.9547
+      },
+      "accuracy": 0.899,
+      "accuracy_ci95": {
+        "low": 0.8828,
+        "high": 0.9164025
+      },
+      "pair_agreement": 0.9392,
+      "pair_agreement_ci95": {
+        "low": 0.929,
+        "high": 0.9496
+      },
+      "pair_kappa": 0.9239866900694312,
+      "pair_kappa_ci95": {
+        "low": 0.9111610593265409,
+        "high": 0.9368553227675062
+      },
+      "pair_chance_agreement": 0.20014008,
+      "pair_chance_agreement_ci95": {
+        "low": 0.2001092085,
+        "high": 0.20248316800000002
+      },
+      "n_copies_valid": 10000,
+      "n_copies_no_face": 0,
+      "n_pairs_valid": 5000
+    }
+  },
+  "params_file": "perturbation_params.csv",
+  "examples_file": "perturbation_examples.jpg",
+  "notes": [
+    "Training augmentation (crop, flip, rotation up to 10 degrees, colour jitter) overlaps with these perturbations, which makes the CNN more robust to them; any bias favours label stability.",
+    "The planar pose model omits 3D effects, so pose perturbations are milder than real head turns."
+  ],
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130"
+    },
+    "utc_time": "2026-10-18T00:15:09+00:00"
+  }
+}

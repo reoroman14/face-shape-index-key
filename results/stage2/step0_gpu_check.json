@@ -1,0 +1,631 @@
+{
+  "seed": 20261017,
+  "change": "ArcFace/SCRFD moved from CPUExecutionProvider (ctx_id=-1) to CUDAExecutionProvider with CPU fallback (ctx_id=0); 640x640 fallback detector removed",
+  "providers_in_use_gpu_run": {
+    "detection": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "recognition": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "embedding_seconds": {
+    "cpu_run": 3053.3,
+    "gpu_run": 187.2
+  },
+  "fallback_detector_usage_in_stage1": {
+    "320": 9164
+  },
+  "router_cache": {
+    "arrays_compared": [
+      "identity",
+      "landmark_ok",
+      "names",
+      "paths",
+      "probs",
+      "ratio_features",
+      "raw_features",
+      "standardiser_median",
+      "standardiser_scale",
+      "z_features"
+    ],
+    "arrays_not_bit_identical": [],
+    "bit_identical": true
+  },
+  "embeddings": {
+    "embed_ok_cpu": 9164,
+    "embed_ok_gpu": 9164,
+    "embed_ok_identical": true,
+    "cpu_run_det_size_counts": {
+      "320": 9164
+    },
+    "max_abs_component_diff": 0.001476723700761795,
+    "mean_abs_component_diff": 0.00012114283785585456,
+    "cosine_cpu_vs_gpu_min": 0.9999531997840603,
+    "cosine_cpu_vs_gpu_median": 0.9999943411542234,
+    "det_score_max_abs_diff": 0.00023764371871948242
+  },
+  "results": {
+    "consistency.json": {
+      "identical": true,
+      "n_differing_values": 0,
+      "differences": []
+    },
+    "distribution.json": {
+      "identical": true,
+      "n_differing_values": 0,
+      "differences": []
+    },
+    "partition_comparison.json": {
+      "identical": false,
+      "n_differing_values": 97,
+      "differences": [
+        {
+          "path": "comparison.auc_shape_minus_kmeans",
+          "cpu_run": 0.012236420149528526,
+          "gpu_run": 0.005628926807476176
+        },
+        {
+          "path": "comparison.auc_shape_minus_kmeans_ci95.high",
+          "cpu_run": 0.023682895379260722,
+          "gpu_run": 0.01864931003955854
+        },
+        {
+          "path": "comparison.auc_shape_minus_kmeans_ci95.low",
+          "cpu_run": -0.0005729824185755934,
+          "gpu_run": -0.007800729815547454
+        },
+        {
+          "path": "comparison.matched_penetration[0].kmeans_recall_interpolated",
+          "cpu_run": 0.3563661723406804,
+          "gpu_run": 0.3727077419508605
+        },
+        {
+          "path": "comparison.matched_penetration[0].shape_minus_kmeans",
+          "cpu_run": 0.1791138515114365,
+          "gpu_run": 0.16277228190125642
+        },
+        {
+          "path": "comparison.matched_penetration[1].kmeans_recall_interpolated",
+          "cpu_run": 0.6790096967060981,
+          "gpu_run": 0.7101464461675544
+        },
+        {
+          "path": "comparison.matched_penetration[1].shape_minus_kmeans",
+          "cpu_run": 0.04728726214900025,
+          "gpu_run": 0.016150512687543972
+        },
+        {
+          "path": "comparison.matched_penetration[2].kmeans_recall_interpolated",
+          "cpu_run": 0.8823637008137952,
+          "gpu_run": 0.8791007273103579
+        },
+        {
+          "path": "comparison.matched_penetration[2].shape_minus_kmeans",
+          "cpu_run": -0.058273062769668815,
+          "gpu_run": -0.05501008926623152
+        },
+        {
+          "path": "comparison.matched_penetration[3].kmeans_recall_interpolated",
+          "cpu_run": 0.9277073234383917,
+          "gpu_run": 0.9233447963544035
+        },
+        {
+          "path": "comparison.matched_penetration[3].shape_minus_kmeans",
+          "cpu_run": -0.044582696127717814,
+          "gpu_run": -0.0402201690437296
+        },
+        {
+          "path": "comparison.matched_penetration[4].kmeans_recall_interpolated",
+          "cpu_run": 0.9746739324778788,
+          "gpu_run": 0.9691724954403729
+        },
+        {
+          "path": "comparison.matched_penetration[4].shape_minus_kmeans",
+          "cpu_run": -0.0414598597289223,
+          "gpu_run": -0.03595842269141636
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[0].kmeans_recall",
+          "cpu_run": 0.8706022659511031,
+          "gpu_run": 0.8592725104353012
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[0].penetration",
+          "cpu_run": 0.4476963989973404,
+          "gpu_run": 0.4224961779647474
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[0].shape_minus_kmeans",
+          "cpu_run": -0.07194359463528044,
+          "gpu_run": -0.0791223175298853
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[0].shape_recall_interpolated",
+          "cpu_run": 0.7986586713158227,
+          "gpu_run": 0.7801501929054159
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[1].penetration",
+          "cpu_run": 0.8286568950856256,
+          "gpu_run": 0.8471092552372695
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[1].shape_minus_kmeans",
+          "cpu_run": -0.04384423953422645,
+          "gpu_run": -0.03816675115986279
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[1].shape_recall_interpolated",
+          "cpu_run": 0.9561557604657736,
+          "gpu_run": 0.9618332488401372
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[2].penetration",
+          "cpu_run": 0.8628015003792122,
+          "gpu_run": 0.8777867826912262
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[2].shape_minus_kmeans",
+          "cpu_run": -0.03333850487435408,
+          "gpu_run": -0.02872777944878102
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[2].shape_recall_interpolated",
+          "cpu_run": 0.9666614951256459,
+          "gpu_run": 0.971272220551219
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[3].penetration",
+          "cpu_run": 0.8958079122711853,
+          "gpu_run": 0.9092382912323045
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[3].shape_minus_kmeans",
+          "cpu_run": -0.023815016758444107,
+          "gpu_run": -0.020745256789109545
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[3].shape_recall_interpolated",
+          "cpu_run": 0.9761849832415559,
+          "gpu_run": 0.9792547432108905
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[4].penetration",
+          "cpu_run": 0.930961142335774,
+          "gpu_run": 0.939482593523578
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[4].shape_minus_kmeans",
+          "cpu_run": -0.015780099891430477,
+          "gpu_run": -0.013832365593486329
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[4].shape_recall_interpolated",
+          "cpu_run": 0.9842199001085695,
+          "gpu_run": 0.9861676344065137
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[5].penetration",
+          "cpu_run": 0.9667022182564523,
+          "gpu_run": 0.96996784240625
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[5].shape_minus_kmeans",
+          "cpu_run": -0.007610820049076539,
+          "gpu_run": -0.006864401625667704
+        },
+        {
+          "path": "comparison.matched_penetration_at_kmeans_points[5].shape_recall_interpolated",
+          "cpu_run": 0.9923891799509235,
+          "gpu_run": 0.9931355983743323
+        },
+        {
+          "path": "kmeans.inertia",
+          "cpu_run": 6607.142336408156,
+          "gpu_run": 6593.247846948387
+        },
+        {
+          "path": "linear_probe.balanced_accuracy",
+          "cpu_run": 0.2480442831785119,
+          "gpu_run": 0.24922950561581372
+        },
+        {
+          "path": "linear_probe.confusion_test_rows_true_cols_pred[0][0]",
+          "cpu_run": 202,
+          "gpu_run": 201
+        },
+        {
+          "path": "linear_probe.confusion_test_rows_true_cols_pred[0][2]",
+          "cpu_run": 131,
+          "gpu_run": 128
+        },
+        {
+          "path": "linear_probe.confusion_test_rows_true_cols_pred[0][3]",
+          "cpu_run": 127,
+          "gpu_run": 129
+        },
+        {
+          "path": "linear_probe.confusion_test_rows_true_cols_pred[0][4]",
+          "cpu_run": 148,
+          "gpu_run": 152
+        },
+        {
+          "path": "linear_probe.confusion_test_rows_true_cols_pred[0][5]",
+          "cpu_run": 196,
+          "gpu_run": 198
+        },
+        {
+          "path": "linear_probe.confusion_test_rows_true_cols_pred[0][6]",
+          "cpu_run": 111,
+          "gpu_run": 107
+        }
+      ]
+    }
+  },
+  "measurement3_code_on_cpu_embeddings": {
+    "reproduces_archived_cpu_numbers_exactly": true,
+    "n_differing_values": 0,
+    "differences": []
+  },
+  "kmeans_seed_sensitivity": {
+    "n_seeds": 20,
+    "seeds": "20261017 .. 20261036",
+    "cpu": {
+      "per_seed": [
+        {
+          "kmeans_random_state": 20261017,
+          "auc": 0.7225386382372926,
+          "recall_1_bucket": 0.8706022659511031,
+          "penetration_1_bucket": 0.4476963989973404,
+          "largest_bucket_share": 0.5141824993310142,
+          "inertia": 6607.142336408156
+        },
+        {
+          "kmeans_random_state": 20261018,
+          "auc": 0.688437630064135,
+          "recall_1_bucket": 0.9039952295766249,
+          "penetration_1_bucket": 0.5424525554619916,
+          "largest_bucket_share": 0.622959593256623,
+          "inertia": 6598.120031140226
+        },
+        {
+          "kmeans_random_state": 20261019,
+          "auc": 0.6935065966344915,
+          "recall_1_bucket": 0.8944543828264758,
+          "penetration_1_bucket": 0.5235209349876587,
+          "largest_bucket_share": 0.609044688252609,
+          "inertia": 6593.790023293584
+        },
+        {
+          "kmeans_random_state": 20261020,
+          "auc": 0.7250192924714097,
+          "recall_1_bucket": 0.8700059630292188,
+          "penetration_1_bucket": 0.44435569844273476,
+          "largest_bucket_share": 0.5230131121220231,
+          "inertia": 6611.2984408549555
+        },
+        {
+          "kmeans_random_state": 20261021,
+          "auc": 0.7241041576887061,
+          "recall_1_bucket": 0.8944543828264758,
+          "penetration_1_bucket": 0.46390580169074347,
+          "largest_bucket_share": 0.5326465078940327,
+          "inertia": 6603.360975396231
+        },
+        {
+          "kmeans_random_state": 20261022,
+          "auc": 0.6074725433574866,
+          "recall_1_bucket": 0.998211091234347,
+          "penetration_1_bucket": 0.7835635809386637,
+          "largest_bucket_share": 0.7907412362857907,
+          "inertia": 6599.233153619994
+        },
+        {
+          "kmeans_random_state": 20261023,
+          "auc": 0.7312598301454402,
+          "recall_1_bucket": 0.8658318425760286,
+          "penetration_1_bucket": 0.4247645864040037,
+          "largest_bucket_share": 0.4674872892694675,
+          "inertia": 6598.291668918186
+        },
+        {
+          "kmeans_random_state": 20261024,
+          "auc": 0.6853541362397739,
+          "recall_1_bucket": 0.939773404889684,
+          "penetration_1_bucket": 0.5812130432208757,
+          "largest_bucket_share": 0.6383462670591383,
+          "inertia": 6619.063198359021
+        },
+        {
+          "kmeans_random_state": 20261025,
+          "auc": 0.7341685464893425,
+          "recall_1_bucket": 0.8610614192009541,
+          "penetration_1_bucket": 0.4159595043776478,
+          "largest_bucket_share": 0.4443403799839443,
+          "inertia": 6606.169257531121
+        },
+        {
+          "kmeans_random_state": 20261026,
+          "auc": 0.7342324003761194,
+          "recall_1_bucket": 0.8616577221228384,
+          "penetration_1_bucket": 0.4163374394781236,
+          "largest_bucket_share": 0.42908750334492907,
+          "inertia": 6606.398519453454
+        },
+        {
+          "kmeans_random_state": 20261027,
+          "auc": 0.7039599775870216,
+          "recall_1_bucket": 0.8771615980918307,
+          "penetration_1_bucket": 0.48999569008779287,
+          "largest_bucket_share": 0.5818838640620819,
+          "inertia": 6602.72995249944
+        },
+        {
+          "kmeans_random_state": 20261028,
+          "auc": 0.720554291120934,
+          "recall_1_bucket": 0.877757901013715,
+          "penetration_1_bucket": 0.4564936622270258,
+          "largest_bucket_share": 0.5417447150120418,
+          "inertia": 6602.6096437208835
+        },
+        {
+          "kmeans_random_state": 20261029,
+          "auc": 0.7260044633976616,
+          "recall_1_bucket": 0.8688133571854502,
+          "penetration_1_bucket": 0.4377874305343802,
+          "largest_bucket_share": 0.4967888680759968,
+          "inertia": 6600.1498064705875
+        },
+        {
+          "kmeans_random_state": 20261030,
+          "auc": 0.7322082073500789,
+          "recall_1_bucket": 0.8676207513416816,
+          "penetration_1_bucket": 0.42436455123537753,
+          "largest_bucket_share": 0.4636071715279636,
+          "inertia": 6598.8969937757565
+        },
+        {
+          "kmeans_random_state": 20261031,
+          "auc": 0.7304995220092702,
+          "recall_1_bucket": 0.8795468097793679,
+          "penetration_1_bucket": 0.43780410531504244,
+          "largest_bucket_share": 0.48943002408348946,
+          "inertia": 6599.208203109037
+        },
+        {
+          "kmeans_random_state": 20261032,
+          "auc": 0.6750000606084492,
+          "recall_1_bucket": 0.9200954084675015,
+          "penetration_1_bucket": 0.5828537139842677,
+          "largest_bucket_share": 0.6529301578806529,
+          "inertia": 6600.007903894332
+        },
+        {
+          "kmeans_random_state": 20261033,
+          "auc": 0.7262614513532782,
+          "recall_1_bucket": 0.8819320214669052,
+          "penetration_1_bucket": 0.44829381889017644,
+          "largest_bucket_share": 0.5157880652930158,
+          "inertia": 6601.921828499243
+        },
+        {
+          "kmeans_random_state": 20261034,
+          "auc": 0.7267854739610327,
+          "recall_1_bucket": 0.8485390578413834,
+          "penetration_1_bucket": 0.4192125227124082,
+          "largest_bucket_share": 0.4296226919989296,
+          "inertia": 6601.917724923916
+        },
+        {
+          "kmeans_random_state": 20261035,
+          "auc": 0.643573932518122,
+          "recall_1_bucket": 0.9683959451401312,
+          "penetration_1_bucket": 0.6860631864085702,
+          "largest_bucket_share": 0.7275889751137276,
+          "inertia": 6593.188705716459
+        },
+        {
+          "kmeans_random_state": 20261036,
+          "auc": 0.7202937001989598,
+          "recall_1_bucket": 0.8765652951699463,
+          "penetration_1_bucket": 0.4557054796520572,
+          "largest_bucket_share": 0.526090446882526,
+          "inertia": 6598.308046996383
+        }
+      ],
+      "auc_min": 0.6074725433574866,
+      "auc_max": 0.7342324003761194,
+      "auc_mean": 0.7075617425904502,
+      "auc_sd": 0.03367758452848338
+    },
+    "gpu": {
+      "per_seed": [
+        {
+          "kmeans_random_state": 20261017,
+          "auc": 0.7291461315793449,
+          "recall_1_bucket": 0.8592725104353012,
+          "penetration_1_bucket": 0.4224961779647474,
+          "largest_bucket_share": 0.4397912764249398,
+          "inertia": 6593.247846948387
+        },
+        {
+          "kmeans_random_state": 20261018,
+          "auc": 0.688107319397592,
+          "recall_1_bucket": 0.9033989266547406,
+          "penetration_1_bucket": 0.5426121227410646,
+          "largest_bucket_share": 0.6228257960931228,
+          "inertia": 6598.124282185749
+        },
+        {
+          "kmeans_random_state": 20261019,
+          "auc": 0.6955052339426778,
+          "recall_1_bucket": 0.898628503279666,
+          "penetration_1_bucket": 0.5230843589121245,
+          "largest_bucket_share": 0.6082419052716083,
+          "inertia": 6593.86087453883
+        },
+        {
+          "kmeans_random_state": 20261020,
+          "auc": 0.7212367510011974,
+          "recall_1_bucket": 0.8717948717948718,
+          "penetration_1_bucket": 0.453384972496188,
+          "largest_bucket_share": 0.5342520738560342,
+          "inertia": 6611.413677091666
+        },
+        {
+          "kmeans_random_state": 20261021,
+          "auc": 0.7405906146129032,
+          "recall_1_bucket": 0.8670244484197973,
+          "penetration_1_bucket": 0.40964917697591074,
+          "largest_bucket_share": 0.4171795557934172,
+          "inertia": 6608.582006841897
+        },
+        {
+          "kmeans_random_state": 20261022,
+          "auc": 0.6074725433574866,
+          "recall_1_bucket": 0.998211091234347,
+          "penetration_1_bucket": 0.7835635809386637,
+          "largest_bucket_share": 0.7907412362857907,
+          "inertia": 6599.230429789352
+        },
+        {
+          "kmeans_random_state": 20261023,
+          "auc": 0.7339775737150547,
+          "recall_1_bucket": 0.8634466308884914,
+          "penetration_1_bucket": 0.41832668496264974,
+          "largest_bucket_share": 0.4577200963339577,
+          "inertia": 6604.515513705575
+        },
+        {
+          "kmeans_random_state": 20261024,
+          "auc": 0.6702324994298133,
+          "recall_1_bucket": 0.9200954084675015,
+          "penetration_1_bucket": 0.59295887041685,
+          "largest_bucket_share": 0.6659084827401659,
+          "inertia": 6604.61463804092
+        },
+        {
+          "kmeans_random_state": 20261025,
+          "auc": 0.733326815937701,
+          "recall_1_bucket": 0.8604651162790697,
+          "penetration_1_bucket": 0.4171514719523001,
+          "largest_bucket_share": 0.45116403532245114,
+          "inertia": 6605.358483051485
+        },
+        {
+          "kmeans_random_state": 20261026,
+          "auc": 0.7103317163400893,
+          "recall_1_bucket": 0.8956469886702445,
+          "penetration_1_bucket": 0.4931778605506449,
+          "largest_bucket_share": 0.5691731335295692,
+          "inertia": 6608.788508998395
+        },
+        {
+          "kmeans_random_state": 20261027,
+          "auc": 0.704469881511608,
+          "recall_1_bucket": 0.8795468097793679,
+          "penetration_1_bucket": 0.49095764142966486,
+          "largest_bucket_share": 0.5826866470430827,
+          "inertia": 6602.7414473744775
+        },
+        {
+          "kmeans_random_state": 20261028,
+          "auc": 0.7191828919964007,
+          "recall_1_bucket": 0.8831246273106739,
+          "penetration_1_bucket": 0.4637305170346849,
+          "largest_bucket_share": 0.5521808937650522,
+          "inertia": 6602.7429165807625
+        },
+        {
+          "kmeans_random_state": 20261029,
+          "auc": 0.7250779978633142,
+          "recall_1_bucket": 0.8694096601073346,
+          "penetration_1_bucket": 0.44014128725157636,
+          "largest_bucket_share": 0.5013379716350014,
+          "inertia": 6600.189035092337
+        },
+        {
+          "kmeans_random_state": 20261030,
+          "auc": 0.727873418108812,
+          "recall_1_bucket": 0.862850327966607,
+          "penetration_1_bucket": 0.42902120314047304,
+          "largest_bucket_share": 0.478993845330479,
+          "inertia": 6598.867287353426
+        },
+        {
+          "kmeans_random_state": 20261031,
+          "auc": 0.7312977783986399,
+          "recall_1_bucket": 0.8819320214669052,
+          "penetration_1_bucket": 0.4382113210112265,
+          "largest_bucket_share": 0.49063419855499063,
+          "inertia": 6599.198701115524
+        },
+        {
+          "kmeans_random_state": 20261032,
+          "auc": 0.671677233063928,
+          "recall_1_bucket": 0.9218843172331544,
+          "penetration_1_bucket": 0.5909798372381841,
+          "largest_bucket_share": 0.6592186245651592,
+          "inertia": 6600.159616749853
+        },
+        {
+          "kmeans_random_state": 20261033,
+          "auc": 0.7271351041859342,
+          "recall_1_bucket": 0.8825283243887895,
+          "penetration_1_bucket": 0.4470474388733659,
+          "largest_bucket_share": 0.5135135135135135,
+          "inertia": 6601.9601687433415
+        },
+        {
+          "kmeans_random_state": 20261034,
+          "auc": 0.727275635431152,
+          "recall_1_bucket": 0.8497316636851521,
+          "penetration_1_bucket": 0.41923390472780353,
+          "largest_bucket_share": 0.4296226919989296,
+          "inertia": 6601.891295028828
+        },
+        {
+          "kmeans_random_state": 20261035,
+          "auc": 0.745556658147374,
+          "recall_1_bucket": 0.8878950506857484,
+          "penetration_1_bucket": 0.4165887579426629,
+          "largest_bucket_share": 0.4616002140754616,
+          "inertia": 6610.445182838397
+        },
+        {
+          "kmeans_random_state": 20261036,
+          "auc": 0.7227515919989619,
+          "recall_1_bucket": 0.8706022659511031,
+          "penetration_1_bucket": 0.44578222991761973,
+          "largest_bucket_share": 0.5096333957720096,
+          "inertia": 6598.372926371497
+        }
+      ],
+      "auc_min": 0.6074725433574866,
+      "auc_max": 0.745556658147374,
+      "auc_mean": 0.7116112695009992,
+      "auc_sd": 0.03234800692440923
+    }
+  },
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": null,
+      "torchvision": null
+    },
+    "utc_time": "2026-10-17T21:04:18+00:00"
+  }
+}

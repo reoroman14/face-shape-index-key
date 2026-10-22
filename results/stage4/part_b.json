@@ -1,0 +1,4706 @@
+{
+  "measurement": "stage4_part_b_rfw_per_group_stability",
+  "seed": 20261017,
+  "dataset": "RFW test set (Wang et al., ICCV 2019), four subsets Caucasian / Asian / Indian / African, loosely cropped 400x400 .jpg, all identities (every identity has >= 2 images)",
+  "dataset_limitations": "RFW group labels are the subset an identity was placed in by the dataset authors, not self-identification. Images are selected from MS-Celeb-1M (celebrity web images), so the population is public figures and the images are uncontrolled web photographs.",
+  "router": {
+    "landmarks": {
+      "forehead_width": [
+        54,
+        284
+      ],
+      "cheekbone_width": [
+        234,
+        454
+      ],
+      "jaw_width": [
+        172,
+        397
+      ],
+      "face_length": [
+        10,
+        152
+      ],
+      "jaw_angle_left_vertex_ramus_chin": [
+        172,
+        234,
+        152
+      ],
+      "jaw_angle_right_vertex_ramus_chin": [
+        397,
+        454,
+        152
+      ]
+    },
+    "features": [
+      "L_length_over_cheek",
+      "F_forehead_over_cheek",
+      "J_jaw_over_cheek",
+      "A_jaw_angle_deg"
+    ],
+    "standardisation": "robust: (x - median) / (IQR / 1.349), statistics over all images with landmarks",
+    "prototypes": {
+      "oval": [
+        0.5,
+        0.5,
+        -0.5,
+        0.5
+      ],
+      "round": [
+        -1.0,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "square": [
+        -1.0,
+        0.0,
+        1.0,
+        -1.0
+      ],
+      "rectangle": [
+        1.5,
+        0.0,
+        0.5,
+        -1.0
+      ],
+      "heart": [
+        0.0,
+        1.5,
+        -1.5,
+        0.0
+      ],
+      "diamond": [
+        0.5,
+        -1.5,
+        -1.0,
+        0.0
+      ],
+      "triangle": [
+        0.0,
+        -1.5,
+        1.5,
+        0.0
+      ]
+    },
+    "prototype_width": 1.0,
+    "softmax_temperature": 1.0,
+    "trained_on_identity": false
+  },
+  "embedding": "not used (Part B runs measurement 1 only; no embeddings computed)",
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130",
+      "pyarrow": "26.0.0"
+    },
+    "utc_time": "2026-10-21T21:54:02+00:00"
+  },
+  "part": "B",
+  "provenance": {
+    "source_dataset": "RFW (Racial Faces in-the-Wild), test subsets only",
+    "derived_from": "MS-Celeb-1M, withdrawn by its creator (Microsoft) in April 2019",
+    "access": "granted in writing by Mei Wang (Beijing University of Posts and Telecommunications) on 2026-10-20, in response to a request from Applied Science Private University",
+    "obtained_from": "the Google Drive link supplied by the maintainer, not a mirror",
+    "downloaded": "the four test subsets only (Caucasian, Asian, Indian, African); the MS1M-wo-RFW and BUPT training sets distributed alongside them were not downloaded",
+    "verification": "unpacked tree verified file by file against the official counts (40,607 images, 11,429 identities) before use; re-verified by faceshape_pilot.stage4.rfw on every run",
+    "maintainer_readme": "data/rfw/readme.txt",
+    "maintainer_readme_sha256": "fbfa5fe0759b76ebb6e5455a93ba965c41f647bd56101df6f85eb1fe776c0be2"
+  },
+  "n_bootstrap": 1000,
+  "seed_streams": {
+    "m1_pairs_and_per_group_ci": 20261017,
+    "pairwise_comparison": [
+      20261017,
+      41,
+      "group index"
+    ],
+    "detector_failure": [
+      20261017,
+      42,
+      "group index"
+    ]
+  },
+  "router_run": {
+    "rfw_counts_verified": {
+      "Caucasian": {
+        "images": 10196,
+        "identities": 2958,
+        "identities_ge2": 2958,
+        "empty_folders_skipped": [
+          "Caucasian/m.0g5ty_"
+        ]
+      },
+      "Asian": {
+        "images": 9688,
+        "identities": 2492,
+        "identities_ge2": 2492,
+        "empty_folders_skipped": []
+      },
+      "Indian": {
+        "images": 10308,
+        "identities": 2984,
+        "identities_ge2": 2984,
+        "empty_folders_skipped": []
+      },
+      "African": {
+        "images": 10415,
+        "identities": 2995,
+        "identities_ge2": 2995,
+        "empty_folders_skipped": []
+      }
+    },
+    "n_images": 40607,
+    "n_decode_failed": 0,
+    "n_landmark_ok": 40301,
+    "n_landmark_failed_after_decode": 306,
+    "image_sizes": [
+      "400x400"
+    ],
+    "mediapipe_model_sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+    "seconds": 264.3
+  },
+  "keep_rule": "landmark detection succeeded, and the identity still has >= 2 such images",
+  "standardisers": {
+    "B1_pooled": {
+      "median": [
+        1.1709877452193846,
+        0.8482770151816563,
+        0.8042439657981957,
+        135.19870238084587
+      ],
+      "robust_scale": [
+        0.07059197756230921,
+        0.026968189562193677,
+        0.022823953954205268,
+        2.8986842128589188
+      ]
+    },
+    "B2_per_group": {
+      "Caucasian": {
+        "median": [
+          1.1887225178098606,
+          0.847711197821128,
+          0.8042804764205316,
+          134.92654484650166
+        ],
+        "robust_scale": [
+          0.07053473789088614,
+          0.02636675253269518,
+          0.022115421908123347,
+          2.6996972576933063
+        ]
+      },
+      "Asian": {
+        "median": [
+          1.1788456962631328,
+          0.8427442936037371,
+          0.7961143218167006,
+          135.020837106587
+        ],
+        "robust_scale": [
+          0.06507807630319946,
+          0.028214696934306914,
+          0.023336855463500082,
+          2.6577933249515446
+        ]
+      },
+      "Indian": {
+        "median": [
+          1.1585735656305696,
+          0.8443536901619123,
+          0.8086790798555126,
+          133.9463060581181
+        ],
+        "robust_scale": [
+          0.06887054070660145,
+          0.025313834995180976,
+          0.022784656389713828,
+          2.53727149102589
+        ]
+      },
+      "African": {
+        "median": [
+          1.1580838981025239,
+          0.8576837619343336,
+          0.8069646647377982,
+          136.98952835278664
+        ],
+        "robust_scale": [
+          0.07211347077359488,
+          0.02580322989568684,
+          0.021584470987361,
+          2.7016989845639743
+        ]
+      }
+    },
+    "B3_lfw": {
+      "median": [
+        1.1886136971112515,
+        0.841238120145539,
+        0.8055666658195426,
+        134.9848804960504
+      ],
+      "robust_scale": [
+        0.06164732563640746,
+        0.02369147151470004,
+        0.019293026875948915,
+        2.903459820102332
+      ]
+    }
+  },
+  "detector_failure": {
+    "groups": {
+      "Caucasian": {
+        "n_images": 10196,
+        "n_failed": 89,
+        "failure_rate": 0.008728913299333072,
+        "failure_rate_ci95_wilson": [
+          0.0070992687059683035,
+          0.010728602399169306
+        ]
+      },
+      "Asian": {
+        "n_images": 9688,
+        "n_failed": 61,
+        "failure_rate": 0.00629644921552436,
+        "failure_rate_ci95_wilson": [
+          0.004905237388316064,
+          0.008079029776533592
+        ]
+      },
+      "Indian": {
+        "n_images": 10308,
+        "n_failed": 59,
+        "failure_rate": 0.005723709740007761,
+        "failure_rate_ci95_wilson": [
+          0.004440208630551141,
+          0.007375475241942029
+        ]
+      },
+      "African": {
+        "n_images": 10415,
+        "n_failed": 97,
+        "failure_rate": 0.009313490158425348,
+        "failure_rate_ci95_wilson": [
+          0.007641123700656642,
+          0.011347691860328748
+        ]
+      }
+    },
+    "n_images": 40607,
+    "n_failed": 306,
+    "failure_rate": 0.007535646563400399,
+    "independence": {
+      "chi2": 12.85707310662675,
+      "dof": 3,
+      "p_value": 0.004956112325226251,
+      "min_expected_count": 73.00534390622306,
+      "cramers_v": 0.017793877809180264
+    },
+    "per_group": {
+      "Caucasian": {
+        "n_images": 10196,
+        "n_decode_failed": 0,
+        "n_landmark_failed_after_decode": 89,
+        "n_failed": 89,
+        "image_failure_rate": 0.008728913299333072,
+        "image_failure_rate_ci95_identity_bootstrap": {
+          "low": 0.006985441430913492,
+          "high": 0.010543996936348776
+        },
+        "n_identities": 2958,
+        "n_identities_dropped_below_2": 8,
+        "identity_drop_rate": 0.002704530087897228,
+        "identity_drop_rate_ci95_identity_bootstrap": {
+          "low": 0.0010141987829614604,
+          "high": 0.004732927653820149
+        }
+      },
+      "Asian": {
+        "n_images": 9688,
+        "n_decode_failed": 0,
+        "n_landmark_failed_after_decode": 61,
+        "n_failed": 61,
+        "image_failure_rate": 0.00629644921552436,
+        "image_failure_rate_ci95_identity_bootstrap": {
+          "low": 0.004686792499901924,
+          "high": 0.007920845609859112
+        },
+        "n_identities": 2492,
+        "n_identities_dropped_below_2": 3,
+        "identity_drop_rate": 0.001203852327447833,
+        "identity_drop_rate_ci95_identity_bootstrap": {
+          "low": 0.0,
+          "high": 0.0028089887640449437
+        }
+      },
+      "Indian": {
+        "n_images": 10308,
+        "n_decode_failed": 0,
+        "n_landmark_failed_after_decode": 59,
+        "n_failed": 59,
+        "image_failure_rate": 0.005723709740007761,
+        "image_failure_rate_ci95_identity_bootstrap": {
+          "low": 0.004269202534222955,
+          "high": 0.007218851827317634
+        },
+        "n_identities": 2984,
+        "n_identities_dropped_below_2": 5,
+        "identity_drop_rate": 0.001675603217158177,
+        "identity_drop_rate_ci95_identity_bootstrap": {
+          "low": 0.0003351206434316354,
+          "high": 0.003351206434316354
+        }
+      },
+      "African": {
+        "n_images": 10415,
+        "n_decode_failed": 0,
+        "n_landmark_failed_after_decode": 97,
+        "n_failed": 97,
+        "image_failure_rate": 0.009313490158425348,
+        "image_failure_rate_ci95_identity_bootstrap": {
+          "low": 0.00731868830430092,
+          "high": 0.011236685295893131
+        },
+        "n_identities": 2995,
+        "n_identities_dropped_below_2": 7,
+        "identity_drop_rate": 0.002337228714524207,
+        "identity_drop_rate_ci95_identity_bootstrap": {
+          "low": 0.000667779632721202,
+          "high": 0.004006677796327212
+        }
+      }
+    },
+    "highest_minus_lowest": {
+      "image_failure_rate": {
+        "highest_group": "African",
+        "lowest_group": "Indian",
+        "difference": 0.003589780418417587,
+        "ci95": {
+          "low": 0.0010723098661304688,
+          "high": 0.006002446091722912
+        },
+        "ci_excludes_zero": true,
+        "p_value_bootstrap": 0.00999000999000999
+      },
+      "identity_drop_rate": {
+        "highest_group": "Caucasian",
+        "lowest_group": "Asian",
+        "difference": 0.0015006777604493948,
+        "ci95": {
+          "low": -0.0006541555017977744,
+          "high": 0.0036570914689006157
+        },
+        "ci_excludes_zero": false,
+        "p_value_bootstrap": 0.17382617382617382
+      }
+    },
+    "notes": [
+      "A failure is an image with no landmarks (decode failures included; none expected, counted separately).",
+      "groups.*: Wilson CIs and chi-square over images (from stage3.part_a.failure_by_group); these treat images as independent.",
+      "per_group.*_ci95_identity_bootstrap and highest_minus_lowest: identities resampled with replacement within each group, N_BOOTSTRAP=1000, seed stream [SEED, 42, group index]; this respects clustering of failures within identity.",
+      "highest/lowest are chosen by point estimate before bootstrapping, so the CI on their difference is conditional on that selection."
+    ]
+  },
+  "top1_agreement_between_conditions": {
+    "B1_pooled_vs_B2_per_group": 0.7973747549688593,
+    "B1_pooled_vs_B3_lfw": 0.8182923500657552,
+    "B2_per_group_vs_B3_lfw": 0.741693754497407
+  },
+  "conditions": {
+    "B1_pooled": {
+      "description": "one standardiser fitted on the ratio features of all four RFW groups pooled (primary)",
+      "groups": {
+        "Caucasian": {
+          "data_accounting": {
+            "group": "Caucasian",
+            "rfw_images": 10196,
+            "rfw_identities": 2958,
+            "decode_failed": 0,
+            "landmark_failed": 89,
+            "dropped_identity_below_2_after_failures_images": 7,
+            "dropped_identities_below_2": 8,
+            "analysis_images": 10100,
+            "analysis_identities": 2950
+          },
+          "n_identities": 2950,
+          "n_unordered_pairs": 13094,
+          "n_ordered_pairs": 26188,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.29059111043225905,
+          "p_top1_ci95": {
+            "low": 0.28130556960338754,
+            "high": 0.30003329306878196
+          },
+          "cohen_kappa_top1": 0.13111994985233807,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.119621710063358,
+            "high": 0.14199622509240853
+          },
+          "chance_agreement_from_marginals": 0.18242674247622778,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.29059111043225905,
+              "p_topk_ci95": {
+                "low": 0.28130556960338754,
+                "high": 0.30003329306878196
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.1829705049701549,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.18065076397301844,
+                "high": 0.18517549754165638
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.4903772720329922,
+              "p_topk_ci95": {
+                "low": 0.4805106819293723,
+                "high": 0.5005058773594784
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.3499848846195147,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34780828165665556,
+                "high": 0.3520439728710459
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6326179929738812,
+              "p_topk_ci95": {
+                "low": 0.6236837451722446,
+                "high": 0.6421997091784174
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.4869032751755398,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.48490713847750266,
+                "high": 0.4888716726524263
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.752711165419276,
+              "p_topk_ci95": {
+                "low": 0.7446766691267463,
+                "high": 0.7604266150438478
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6186554986260808,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.616837911537418,
+                "high": 0.6203950091454854
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8538261799297389,
+              "p_topk_ci95": {
+                "low": 0.8478818848474806,
+                "high": 0.8597577624917658
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7568112067049058,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7553837344417609,
+                "high": 0.7581934503886602
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9431800824805254,
+              "p_topk_ci95": {
+                "low": 0.9394327052078772,
+                "high": 0.9467169811421169
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.8914633941628466,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8907540388483837,
+                "high": 0.8921388086901626
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 8251,
+              "p_top1_given_probe_class": 0.40479941825233307,
+              "ci95": {
+                "low": 0.38582928287885615,
+                "high": 0.4228124927644741
+              },
+              "share_of_images": 0.311980198019802
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 2388,
+              "p_top1_given_probe_class": 0.1708542713567839,
+              "ci95": {
+                "low": 0.1418510589741173,
+                "high": 0.19901887985153918
+              },
+              "share_of_images": 0.09297029702970297
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 4469,
+              "p_top1_given_probe_class": 0.3293801745356903,
+              "ci95": {
+                "low": 0.30444450347335344,
+                "high": 0.35266603746618
+              },
+              "share_of_images": 0.17287128712871286
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 3741,
+              "p_top1_given_probe_class": 0.276931301790965,
+              "ci95": {
+                "low": 0.2495624245182294,
+                "high": 0.30517009397988076
+              },
+              "share_of_images": 0.14138613861386137
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 2287,
+              "p_top1_given_probe_class": 0.2055094009619589,
+              "ci95": {
+                "low": 0.17484882527530443,
+                "high": 0.23529538539553752
+              },
+              "share_of_images": 0.08712871287128712
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 2270,
+              "p_top1_given_probe_class": 0.13832599118942732,
+              "ci95": {
+                "low": 0.11815201609169587,
+                "high": 0.1602446283491195
+              },
+              "share_of_images": 0.08603960396039603
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2782,
+              "p_top1_given_probe_class": 0.2048885693745507,
+              "ci95": {
+                "low": 0.18188737492016183,
+                "high": 0.23121119800120993
+              },
+              "share_of_images": 0.10762376237623762
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                3340,
+                709,
+                922,
+                1048,
+                742,
+                733,
+                757
+              ],
+              [
+                709,
+                408,
+                432,
+                184,
+                245,
+                159,
+                251
+              ],
+              [
+                922,
+                432,
+                1472,
+                588,
+                351,
+                297,
+                407
+              ],
+              [
+                1048,
+                184,
+                588,
+                1036,
+                196,
+                286,
+                403
+              ],
+              [
+                742,
+                245,
+                351,
+                196,
+                470,
+                185,
+                98
+              ],
+              [
+                733,
+                159,
+                297,
+                286,
+                185,
+                314,
+                296
+              ],
+              [
+                757,
+                251,
+                407,
+                403,
+                98,
+                296,
+                570
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 3151,
+              "round": 939,
+              "square": 1746,
+              "rectangle": 1428,
+              "heart": 880,
+              "diamond": 869,
+              "triangle": 1087
+            },
+            "shares": {
+              "oval": 0.311980198019802,
+              "round": 0.09297029702970297,
+              "square": 0.17287128712871286,
+              "rectangle": 0.14138613861386137,
+              "heart": 0.08712871287128712,
+              "diamond": 0.08603960396039603,
+              "triangle": 0.10762376237623762
+            },
+            "largest_class": "oval",
+            "max_share": 0.311980198019802
+          },
+          "effective_n_classes": 5.481652450875239,
+          "effective_n_classes_ci95": {
+            "low": 5.363922520429879,
+            "high": 5.588248369741911
+          }
+        },
+        "Asian": {
+          "data_accounting": {
+            "group": "Asian",
+            "rfw_images": 9688,
+            "rfw_identities": 2492,
+            "decode_failed": 0,
+            "landmark_failed": 61,
+            "dropped_identity_below_2_after_failures_images": 3,
+            "dropped_identities_below_2": 3,
+            "analysis_images": 9624,
+            "analysis_identities": 2489
+          },
+          "n_identities": 2489,
+          "n_unordered_pairs": 13850,
+          "n_ordered_pairs": 27700,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.27335740072202164,
+          "p_top1_ci95": {
+            "low": 0.2638997582398947,
+            "high": 0.28358019760041353
+          },
+          "cohen_kappa_top1": 0.11858772847538832,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.10705341286652377,
+            "high": 0.12997101117520918
+          },
+          "chance_agreement_from_marginals": 0.1757158520296654,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.27335740072202164,
+              "p_topk_ci95": {
+                "low": 0.2638997582398947,
+                "high": 0.28358019760041353
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.17564562570709213,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.17392140072908918,
+                "high": 0.17747778226225103
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.47342960288808666,
+              "p_topk_ci95": {
+                "low": 0.46341580989483416,
+                "high": 0.48333107690866206
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.34591824815218286,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34357640529642786,
+                "high": 0.3480360759762263
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6174729241877256,
+              "p_topk_ci95": {
+                "low": 0.6078734310952907,
+                "high": 0.627079681166272
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.48332184355597163,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.4809744861014759,
+                "high": 0.4853770095807659
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7434657039711191,
+              "p_topk_ci95": {
+                "low": 0.7354527363645244,
+                "high": 0.7523348162252108
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6165262648132981,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6146056544241199,
+                "high": 0.6183046696105571
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8430324909747292,
+              "p_topk_ci95": {
+                "low": 0.8364163659867863,
+                "high": 0.8496157888900738
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7490556700907175,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7473500307298735,
+                "high": 0.7505880229869452
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9321660649819494,
+              "p_topk_ci95": {
+                "low": 0.9281397206544815,
+                "high": 0.9362071427294081
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.883951110490926,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8831424170525136,
+                "high": 0.8846916916888896
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 7851,
+              "p_top1_given_probe_class": 0.35180231817602853,
+              "ci95": {
+                "low": 0.3339201974972413,
+                "high": 0.371813535581105
+              },
+              "share_of_images": 0.28283458021612634
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 2294,
+              "p_top1_given_probe_class": 0.16652136006974716,
+              "ci95": {
+                "low": 0.13664887066480452,
+                "high": 0.197758201030573
+              },
+              "share_of_images": 0.0836450540315877
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 4563,
+              "p_top1_given_probe_class": 0.3050624589086128,
+              "ci95": {
+                "low": 0.27939707868197505,
+                "high": 0.3300576398370367
+              },
+              "share_of_images": 0.16801745635910226
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 1986,
+              "p_top1_given_probe_class": 0.1691842900302115,
+              "ci95": {
+                "low": 0.1396749968821595,
+                "high": 0.19990911397692337
+              },
+              "share_of_images": 0.07086450540315876
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 3768,
+              "p_top1_given_probe_class": 0.2924628450106157,
+              "ci95": {
+                "low": 0.2636429155116569,
+                "high": 0.3209810394447266
+              },
+              "share_of_images": 0.13393599334995843
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 4775,
+              "p_top1_given_probe_class": 0.24586387434554974,
+              "ci95": {
+                "low": 0.2256482876109802,
+                "high": 0.26598019810803164
+              },
+              "share_of_images": 0.17248545303408147
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2463,
+              "p_top1_given_probe_class": 0.17214778725131952,
+              "ci95": {
+                "low": 0.14744142671701962,
+                "high": 0.20000207555002075
+              },
+              "share_of_images": 0.08821695760598504
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                2762,
+                586,
+                949,
+                539,
+                1085,
+                1337,
+                593
+              ],
+              [
+                586,
+                382,
+                433,
+                106,
+                247,
+                317,
+                223
+              ],
+              [
+                949,
+                433,
+                1392,
+                311,
+                408,
+                631,
+                439
+              ],
+              [
+                539,
+                106,
+                311,
+                336,
+                190,
+                308,
+                196
+              ],
+              [
+                1085,
+                247,
+                408,
+                190,
+                1102,
+                578,
+                158
+              ],
+              [
+                1337,
+                317,
+                631,
+                308,
+                578,
+                1174,
+                430
+              ],
+              [
+                593,
+                223,
+                439,
+                196,
+                158,
+                430,
+                424
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 2722,
+              "round": 805,
+              "square": 1617,
+              "rectangle": 682,
+              "heart": 1289,
+              "diamond": 1660,
+              "triangle": 849
+            },
+            "shares": {
+              "oval": 0.28283458021612634,
+              "round": 0.0836450540315877,
+              "square": 0.16801745635910226,
+              "rectangle": 0.07086450540315876,
+              "heart": 0.13393599334995843,
+              "diamond": 0.17248545303408147,
+              "triangle": 0.08821695760598504
+            },
+            "largest_class": "oval",
+            "max_share": 0.28283458021612634
+          },
+          "effective_n_classes": 5.691006180997114,
+          "effective_n_classes_ci95": {
+            "low": 5.577429455288932,
+            "high": 5.793645392291695
+          }
+        },
+        "Indian": {
+          "data_accounting": {
+            "group": "Indian",
+            "rfw_images": 10308,
+            "rfw_identities": 2984,
+            "decode_failed": 0,
+            "landmark_failed": 59,
+            "dropped_identity_below_2_after_failures_images": 5,
+            "dropped_identities_below_2": 5,
+            "analysis_images": 10244,
+            "analysis_identities": 2979
+          },
+          "n_identities": 2979,
+          "n_unordered_pairs": 13270,
+          "n_ordered_pairs": 26540,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.3186887716654107,
+          "p_top1_ci95": {
+            "low": 0.30848652593323517,
+            "high": 0.33046660163434255
+          },
+          "cohen_kappa_top1": 0.15730189850835558,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.14576352988383587,
+            "high": 0.17038097407618413
+          },
+          "chance_agreement_from_marginals": 0.18997431054011904,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.3186887716654107,
+              "p_topk_ci95": {
+                "low": 0.30848652593323517,
+                "high": 0.33046660163434255
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.19073205349384598,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.18843486426820458,
+                "high": 0.1933348592939643
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.5102863602110023,
+              "p_topk_ci95": {
+                "low": 0.4997010323976886,
+                "high": 0.5216889242959991
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.344833735821097,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34267579922337277,
+                "high": 0.3470905629381533
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6505651846269781,
+              "p_topk_ci95": {
+                "low": 0.6408119227160592,
+                "high": 0.6607650989678132
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.482545038218928,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.47999025943687185,
+                "high": 0.4847870992658201
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7664280331574981,
+              "p_topk_ci95": {
+                "low": 0.758639464370836,
+                "high": 0.7745415652751482
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.617808656424537,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6153047760060414,
+                "high": 0.6201308644865262
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8657121326299925,
+              "p_topk_ci95": {
+                "low": 0.8597259145510615,
+                "high": 0.8719066501608432
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.759752027911575,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7575411458440692,
+                "high": 0.7620313138509374
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9444235116804823,
+              "p_topk_ci95": {
+                "low": 0.9409092850818794,
+                "high": 0.9481559304112284
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.89674594013089,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8954433588996511,
+                "high": 0.8981463126318264
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 5518,
+              "p_top1_given_probe_class": 0.3149691917361363,
+              "ci95": {
+                "low": 0.29346693965796383,
+                "high": 0.3349708236494031
+              },
+              "share_of_images": 0.20724326434986334
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 2486,
+              "p_top1_given_probe_class": 0.1568785197103781,
+              "ci95": {
+                "low": 0.13656693997246994,
+                "high": 0.17739310117770307
+              },
+              "share_of_images": 0.09634908238969153
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 8513,
+              "p_top1_given_probe_class": 0.4879595912134383,
+              "ci95": {
+                "low": 0.46907838522284934,
+                "high": 0.5086762443438915
+              },
+              "share_of_images": 0.31794221007418977
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 3079,
+              "p_top1_given_probe_class": 0.2325430334524196,
+              "ci95": {
+                "low": 0.205258152460049,
+                "high": 0.2608175353869552
+              },
+              "share_of_images": 0.11421319796954314
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 2057,
+              "p_top1_given_probe_class": 0.18667963052989792,
+              "ci95": {
+                "low": 0.1570517990290159,
+                "high": 0.21884633921550387
+              },
+              "share_of_images": 0.07789925810230379
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 2176,
+              "p_top1_given_probe_class": 0.21231617647058823,
+              "ci95": {
+                "low": 0.1801029756347847,
+                "high": 0.2438825761080003
+              },
+              "share_of_images": 0.08375634517766498
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2711,
+              "p_top1_given_probe_class": 0.22648469199557358,
+              "ci95": {
+                "low": 0.19699860482869666,
+                "high": 0.2600963916873093
+              },
+              "share_of_images": 0.10259664193674346
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                1738,
+                496,
+                1114,
+                663,
+                553,
+                512,
+                442
+              ],
+              [
+                496,
+                390,
+                815,
+                164,
+                180,
+                174,
+                267
+              ],
+              [
+                1114,
+                815,
+                4154,
+                837,
+                465,
+                423,
+                705
+              ],
+              [
+                663,
+                164,
+                837,
+                716,
+                193,
+                181,
+                325
+              ],
+              [
+                553,
+                180,
+                465,
+                193,
+                384,
+                174,
+                108
+              ],
+              [
+                512,
+                174,
+                423,
+                181,
+                174,
+                462,
+                250
+              ],
+              [
+                442,
+                267,
+                705,
+                325,
+                108,
+                250,
+                614
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 2123,
+              "round": 987,
+              "square": 3257,
+              "rectangle": 1170,
+              "heart": 798,
+              "diamond": 858,
+              "triangle": 1051
+            },
+            "shares": {
+              "oval": 0.20724326434986334,
+              "round": 0.09634908238969153,
+              "square": 0.31794221007418977,
+              "rectangle": 0.11421319796954314,
+              "heart": 0.07789925810230379,
+              "diamond": 0.08375634517766498,
+              "triangle": 0.10259664193674346
+            },
+            "largest_class": "square",
+            "max_share": 0.31794221007418977
+          },
+          "effective_n_classes": 5.263869610353546,
+          "effective_n_classes_ci95": {
+            "low": 5.135702403514659,
+            "high": 5.387368064337089
+          }
+        },
+        "African": {
+          "data_accounting": {
+            "group": "African",
+            "rfw_images": 10415,
+            "rfw_identities": 2995,
+            "decode_failed": 0,
+            "landmark_failed": 97,
+            "dropped_identity_below_2_after_failures_images": 6,
+            "dropped_identities_below_2": 7,
+            "analysis_images": 10312,
+            "analysis_identities": 2988
+          },
+          "n_identities": 2988,
+          "n_unordered_pairs": 13503,
+          "n_ordered_pairs": 27006,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.33392579426794045,
+          "p_top1_ci95": {
+            "low": 0.32297239618838475,
+            "high": 0.34511533658934174
+          },
+          "cohen_kappa_top1": 0.10876068430950814,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.09715022694859403,
+            "high": 0.12057683140768087
+          },
+          "chance_agreement_from_marginals": 0.2510578785943723,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.33392579426794045,
+              "p_topk_ci95": {
+                "low": 0.32297239618838475,
+                "high": 0.34511533658934174
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.2518453862535619,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.24919512601153285,
+                "high": 0.2546473584978263
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.562911945493594,
+              "p_topk_ci95": {
+                "low": 0.5521089085141607,
+                "high": 0.5740488393941474
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.4645679117251598,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.4609910764928553,
+                "high": 0.4682273983525404
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.720617640524328,
+              "p_topk_ci95": {
+                "low": 0.7112547499709738,
+                "high": 0.7303431080289579
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.6263142677485622,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6226894015768806,
+                "high": 0.6301118669318879
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.8303710286602977,
+              "p_topk_ci95": {
+                "low": 0.8232297535893847,
+                "high": 0.8379765905235047
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.7562202257786352,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7532451215231749,
+                "high": 0.7594439306875328
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.9105013700659113,
+              "p_topk_ci95": {
+                "low": 0.9053694890882993,
+                "high": 0.915719475883853
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.8609620239550267,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8593180465880169,
+                "high": 0.8629253281589717
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9654150929423091,
+              "p_topk_ci95": {
+                "low": 0.9627074825146482,
+                "high": 0.9682121918763086
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.9369949582217951,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.9362031949539149,
+                "high": 0.9379087350754564
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 9351,
+              "p_top1_given_probe_class": 0.43503368623676614,
+              "ci95": {
+                "low": 0.4154959910900872,
+                "high": 0.45379371329224644
+              },
+              "share_of_images": 0.3455197827773468
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 8657,
+              "p_top1_given_probe_class": 0.3895113780755458,
+              "ci95": {
+                "low": 0.37212547772350163,
+                "high": 0.40590004556725395
+              },
+              "share_of_images": 0.3180760279286268
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 3620,
+              "p_top1_given_probe_class": 0.2425414364640884,
+              "ci95": {
+                "low": 0.2187747901136083,
+                "high": 0.2660709481043767
+              },
+              "share_of_images": 0.13489138867339023
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 861,
+              "p_top1_given_probe_class": 0.09523809523809523,
+              "ci95": {
+                "low": 0.06626438343752833,
+                "high": 0.12590946182761897
+              },
+              "share_of_images": 0.032583397982932506
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 2124,
+              "p_top1_given_probe_class": 0.15065913370998116,
+              "ci95": {
+                "low": 0.12400733159117305,
+                "high": 0.1785640306503232
+              },
+              "share_of_images": 0.08000387897595035
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 625,
+              "p_top1_given_probe_class": 0.0288,
+              "ci95": {
+                "low": 0.012837524522917785,
+                "high": 0.04694914453161924
+              },
+              "share_of_images": 0.023370830100853376
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 1768,
+              "p_top1_given_probe_class": 0.1583710407239819,
+              "ci95": {
+                "low": 0.1312403057876972,
+                "high": 0.18729976725082148
+              },
+              "share_of_images": 0.06555469356089992
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                4068,
+                2568,
+                898,
+                336,
+                784,
+                239,
+                458
+              ],
+              [
+                2568,
+                3372,
+                1150,
+                193,
+                635,
+                167,
+                572
+              ],
+              [
+                898,
+                1150,
+                878,
+                116,
+                226,
+                75,
+                277
+              ],
+              [
+                336,
+                193,
+                116,
+                82,
+                47,
+                25,
+                62
+              ],
+              [
+                784,
+                635,
+                226,
+                47,
+                320,
+                47,
+                65
+              ],
+              [
+                239,
+                167,
+                75,
+                25,
+                47,
+                18,
+                54
+              ],
+              [
+                458,
+                572,
+                277,
+                62,
+                65,
+                54,
+                280
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 3563,
+              "round": 3280,
+              "square": 1391,
+              "rectangle": 336,
+              "heart": 825,
+              "diamond": 241,
+              "triangle": 676
+            },
+            "shares": {
+              "oval": 0.3455197827773468,
+              "round": 0.3180760279286268,
+              "square": 0.13489138867339023,
+              "rectangle": 0.032583397982932506,
+              "heart": 0.08000387897595035,
+              "diamond": 0.023370830100853376,
+              "triangle": 0.06555469356089992
+            },
+            "largest_class": "oval",
+            "max_share": 0.3455197827773468
+          },
+          "effective_n_classes": 3.983145263549662,
+          "effective_n_classes_ci95": {
+            "low": 3.907334082817894,
+            "high": 4.06010325377501
+          }
+        }
+      },
+      "between_groups": {
+        "p_top1": {
+          "pairwise": [
+            {
+              "group_a": "Caucasian",
+              "group_b": "Asian",
+              "difference_a_minus_b": 0.01723370971023741,
+              "ci95": {
+                "low": 0.003669517652080495,
+                "high": 0.030374538714646362
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.011988011988011988,
+              "p_value_holm": 0.023976023976023976,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.02809766123315166,
+              "ci95": {
+                "low": -0.04294451991179511,
+                "high": -0.013917637366378497
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "African",
+              "difference_a_minus_b": -0.0433346838356814,
+              "ci95": {
+                "low": -0.05721190023171076,
+                "high": -0.02928117379484758
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.04533137094338907,
+              "ci95": {
+                "low": -0.059989574318807165,
+                "high": -0.030061048539848464
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "African",
+              "difference_a_minus_b": -0.06056839354591881,
+              "ci95": {
+                "low": -0.07576332823185997,
+                "high": -0.046326239053430154
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Indian",
+              "group_b": "African",
+              "difference_a_minus_b": -0.015237022602529737,
+              "ci95": {
+                "low": -0.029406392414656056,
+                "high": 0.0003785537152606893
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.057942057942057944,
+              "p_value_holm": 0.057942057942057944,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            }
+          ],
+          "n_significant_uncorrected": 5,
+          "n_significant_holm": 5,
+          "spread": {
+            "max_group": "African",
+            "min_group": "Asian",
+            "max_minus_min": 0.06056839354591881,
+            "ci95_replicate_max_minus_min": {
+              "low": 0.04657795473908395,
+              "high": 0.07576332823185997
+            },
+            "ci95_fixed_pair_difference": {
+              "low": 0.046326239053430154,
+              "high": 0.07576332823185997
+            }
+          }
+        },
+        "cohen_kappa_top1": {
+          "pairwise": [
+            {
+              "group_a": "Caucasian",
+              "group_b": "Asian",
+              "difference_a_minus_b": 0.01253222137694976,
+              "ci95": {
+                "low": -0.003189508010512989,
+                "high": 0.027836615730998656
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.12787212787212787,
+              "p_value_holm": 0.25574425574425574,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.0261819486560175,
+              "ci95": {
+                "low": -0.04349429103132398,
+                "high": -0.009908377518988029
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.003996003996003996,
+              "p_value_holm": 0.015984015984015984,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.022359265542829937,
+              "ci95": {
+                "low": 0.005857655726887091,
+                "high": 0.03832814596889672
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.005994005994005994,
+              "p_value_holm": 0.017982017982017984,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.03871417003296726,
+              "ci95": {
+                "low": -0.05541266348696951,
+                "high": -0.021733500607704792
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.009827044165880178,
+              "ci95": {
+                "low": -0.007091711751528396,
+                "high": 0.02587128938735386
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.24575424575424576,
+              "p_value_holm": 0.25574425574425574,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Indian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.04854121419884744,
+              "ci95": {
+                "low": 0.03161031025843634,
+                "high": 0.06524162073834909
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            }
+          ],
+          "n_significant_uncorrected": 4,
+          "n_significant_holm": 4,
+          "spread": {
+            "max_group": "Indian",
+            "min_group": "African",
+            "max_minus_min": 0.04854121419884744,
+            "ci95_replicate_max_minus_min": {
+              "low": 0.033549631601486905,
+              "high": 0.06524162073834909
+            },
+            "ci95_fixed_pair_difference": {
+              "low": 0.03161031025843634,
+              "high": 0.06524162073834909
+            }
+          }
+        },
+        "notes": [
+          "Groups are resampled independently: identities with replacement within each group, N_BOOTSTRAP=1000, seed stream [SEED, 41, group index]; the pair sample is the one m1_consistency draws and is held fixed.",
+          "p_value_bootstrap = 2 * min(P*(d <= 0), P*(d >= 0)) with the +1 correction; it agrees with 'ci_excludes_zero' up to percentile discreteness.",
+          "Holm step-down across the six pairwise comparisons, alpha = 0.05, separately per metric and per condition. Only significant_holm supports a claim of a difference.",
+          "Spread: point = max group minus min group by point estimate. ci95_replicate_max_minus_min is the percentile CI of max_g - min_g over replicates (biased upward when groups are equal, so it never covers zero); ci95_fixed_pair_difference is the CI of the difference for the two groups named."
+        ]
+      }
+    },
+    "B2_per_group": {
+      "description": "a separate standardiser fitted inside each RFW group (sensitivity)",
+      "groups": {
+        "Caucasian": {
+          "data_accounting": {
+            "group": "Caucasian",
+            "rfw_images": 10196,
+            "rfw_identities": 2958,
+            "decode_failed": 0,
+            "landmark_failed": 89,
+            "dropped_identity_below_2_after_failures_images": 7,
+            "dropped_identities_below_2": 8,
+            "analysis_images": 10100,
+            "analysis_identities": 2950
+          },
+          "n_identities": 2950,
+          "n_unordered_pairs": 13094,
+          "n_ordered_pairs": 26188,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.28936917672216284,
+          "p_top1_ci95": {
+            "low": 0.2805354431145266,
+            "high": 0.29964730534733225
+          },
+          "cohen_kappa_top1": 0.13561414687203338,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.12466057761346343,
+            "high": 0.14733820491533967
+          },
+          "chance_agreement_from_marginals": 0.17709695127928632,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.28936917672216284,
+              "p_topk_ci95": {
+                "low": 0.2805354431145266,
+                "high": 0.29964730534733225
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.1774734894827499,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.1755670967152437,
+                "high": 0.17937493347623473
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.48652054376050097,
+              "p_topk_ci95": {
+                "low": 0.4770230639253025,
+                "high": 0.4969380546069099
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.34387942024689716,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34219284712804937,
+                "high": 0.34558921517256913
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6310523904078204,
+              "p_topk_ci95": {
+                "low": 0.6216389371556594,
+                "high": 0.6407740649874623
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.4818442919211731,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.48007016434772687,
+                "high": 0.4837007925113096
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7519474568504658,
+              "p_topk_ci95": {
+                "low": 0.7438301739268336,
+                "high": 0.7599592068468946
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6165102336948216,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6146742860557906,
+                "high": 0.6184821927802295
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8566519016343364,
+              "p_topk_ci95": {
+                "low": 0.8506421325726027,
+                "high": 0.8626853251085888
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7563064747363683,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.754711777336933,
+                "high": 0.7578752195704259
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9405452879181304,
+              "p_topk_ci95": {
+                "low": 0.9367040641115927,
+                "high": 0.9443537030368243
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.8901250251418901,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8893258653863758,
+                "high": 0.8908872798644127
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 7608,
+              "p_top1_given_probe_class": 0.3824921135646688,
+              "ci95": {
+                "low": 0.36348290069841943,
+                "high": 0.3998988983875429
+              },
+              "share_of_images": 0.2869306930693069
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 3570,
+              "p_top1_given_probe_class": 0.22969187675070027,
+              "ci95": {
+                "low": 0.2058815097139773,
+                "high": 0.25469929251880447
+              },
+              "share_of_images": 0.13891089108910892
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 5185,
+              "p_top1_given_probe_class": 0.36142719382835103,
+              "ci95": {
+                "low": 0.3383958009249206,
+                "high": 0.3831198430300096
+              },
+              "share_of_images": 0.1997029702970297
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 2519,
+              "p_top1_given_probe_class": 0.2318380309646685,
+              "ci95": {
+                "low": 0.19819525022404605,
+                "high": 0.2642014185253431
+              },
+              "share_of_images": 0.09445544554455446
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 2682,
+              "p_top1_given_probe_class": 0.22296793437733034,
+              "ci95": {
+                "low": 0.19432805314256515,
+                "high": 0.2519241842850633
+              },
+              "share_of_images": 0.10227722772277227
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 1958,
+              "p_top1_given_probe_class": 0.1317671092951992,
+              "ci95": {
+                "low": 0.11065653850903255,
+                "high": 0.15400999912616578
+              },
+              "share_of_images": 0.07445544554455445
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2666,
+              "p_top1_given_probe_class": 0.2003000750187547,
+              "ci95": {
+                "low": 0.17955451663090297,
+                "high": 0.22363094241178627
+              },
+              "share_of_images": 0.10326732673267326
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                2910,
+                974,
+                998,
+                675,
+                774,
+                605,
+                672
+              ],
+              [
+                974,
+                820,
+                665,
+                171,
+                406,
+                195,
+                339
+              ],
+              [
+                998,
+                665,
+                1874,
+                475,
+                441,
+                289,
+                443
+              ],
+              [
+                675,
+                171,
+                475,
+                584,
+                166,
+                157,
+                291
+              ],
+              [
+                774,
+                406,
+                441,
+                166,
+                598,
+                182,
+                115
+              ],
+              [
+                605,
+                195,
+                289,
+                157,
+                182,
+                258,
+                272
+              ],
+              [
+                672,
+                339,
+                443,
+                291,
+                115,
+                272,
+                534
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 2898,
+              "round": 1403,
+              "square": 2017,
+              "rectangle": 954,
+              "heart": 1033,
+              "diamond": 752,
+              "triangle": 1043
+            },
+            "shares": {
+              "oval": 0.2869306930693069,
+              "round": 0.13891089108910892,
+              "square": 0.1997029702970297,
+              "rectangle": 0.09445544554455446,
+              "heart": 0.10227722772277227,
+              "diamond": 0.07445544554455445,
+              "triangle": 0.10326732673267326
+            },
+            "largest_class": "oval",
+            "max_share": 0.2869306930693069
+          },
+          "effective_n_classes": 5.646624590521466,
+          "effective_n_classes_ci95": {
+            "low": 5.535601561311929,
+            "high": 5.751541255882915
+          }
+        },
+        "Asian": {
+          "data_accounting": {
+            "group": "Asian",
+            "rfw_images": 9688,
+            "rfw_identities": 2492,
+            "decode_failed": 0,
+            "landmark_failed": 61,
+            "dropped_identity_below_2_after_failures_images": 3,
+            "dropped_identities_below_2": 3,
+            "analysis_images": 9624,
+            "analysis_identities": 2489
+          },
+          "n_identities": 2489,
+          "n_unordered_pairs": 13850,
+          "n_ordered_pairs": 27700,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.29270758122743684,
+          "p_top1_ci95": {
+            "low": 0.2828047078538814,
+            "high": 0.30302244731749567
+          },
+          "cohen_kappa_top1": 0.1309540519912827,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.11931436259599763,
+            "high": 0.14309295284702728
+          },
+          "chance_agreement_from_marginals": 0.18629597988265686,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.29270758122743684,
+              "p_topk_ci95": {
+                "low": 0.2828047078538814,
+                "high": 0.30302244731749567
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.1862015388724337,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.1842611933608788,
+                "high": 0.18823237424054753
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.4929241877256318,
+              "p_topk_ci95": {
+                "low": 0.48222109779150973,
+                "high": 0.5034760531671677
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.35088316738238673,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34893918860955847,
+                "high": 0.35274188607878393
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6313718411552347,
+              "p_topk_ci95": {
+                "low": 0.6217407964928784,
+                "high": 0.6408461882935553
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.48744366145406665,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.4851667625915198,
+                "high": 0.4894733112759625
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7496028880866425,
+              "p_topk_ci95": {
+                "low": 0.7413577207777956,
+                "high": 0.7578875784101023
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6196628052312059,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6174586964552199,
+                "high": 0.6220155113801727
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.850216606498195,
+              "p_topk_ci95": {
+                "low": 0.8439086344284112,
+                "high": 0.8570233651530219
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7566821851808496,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7546858003181479,
+                "high": 0.7587623758633074
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9367148014440433,
+              "p_topk_ci95": {
+                "low": 0.9327813618060045,
+                "high": 0.9407057919518159
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.8919269365695272,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8909155481223258,
+                "high": 0.8929094925529949
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 8276,
+              "p_top1_given_probe_class": 0.3791686805219913,
+              "ci95": {
+                "low": 0.3621465990444322,
+                "high": 0.3974100642845216
+              },
+              "share_of_images": 0.2967581047381546
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 3747,
+              "p_top1_given_probe_class": 0.2353883106485188,
+              "ci95": {
+                "low": 0.21138889957595075,
+                "high": 0.261925657510925
+              },
+              "share_of_images": 0.13601413133832085
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 6037,
+              "p_top1_given_probe_class": 0.37733973828060297,
+              "ci95": {
+                "low": 0.3541901876969339,
+                "high": 0.40046607357732017
+              },
+              "share_of_images": 0.22163341645885287
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 2121,
+              "p_top1_given_probe_class": 0.1687883074021688,
+              "ci95": {
+                "low": 0.13439739640430678,
+                "high": 0.20204284659222432
+              },
+              "share_of_images": 0.07657938487115544
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 3022,
+              "p_top1_given_probe_class": 0.256783587028458,
+              "ci95": {
+                "low": 0.22539503452361706,
+                "high": 0.2890859884547237
+              },
+              "share_of_images": 0.10816708229426433
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 2032,
+              "p_top1_given_probe_class": 0.13484251968503938,
+              "ci95": {
+                "low": 0.1137870535957901,
+                "high": 0.15825515988226838
+              },
+              "share_of_images": 0.07304655029093932
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2465,
+              "p_top1_given_probe_class": 0.16308316430020284,
+              "ci95": {
+                "low": 0.13825672713682552,
+                "high": 0.1877264485324272
+              },
+              "share_of_images": 0.08780133000831256
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                3138,
+                986,
+                1258,
+                647,
+                968,
+                638,
+                641
+              ],
+              [
+                986,
+                882,
+                827,
+                158,
+                341,
+                210,
+                343
+              ],
+              [
+                1258,
+                827,
+                2278,
+                408,
+                420,
+                324,
+                522
+              ],
+              [
+                647,
+                158,
+                408,
+                358,
+                178,
+                165,
+                207
+              ],
+              [
+                968,
+                341,
+                420,
+                178,
+                776,
+                205,
+                134
+              ],
+              [
+                638,
+                210,
+                324,
+                165,
+                205,
+                274,
+                216
+              ],
+              [
+                641,
+                343,
+                522,
+                207,
+                134,
+                216,
+                402
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 2856,
+              "round": 1309,
+              "square": 2133,
+              "rectangle": 737,
+              "heart": 1041,
+              "diamond": 703,
+              "triangle": 845
+            },
+            "shares": {
+              "oval": 0.2967581047381546,
+              "round": 0.13601413133832085,
+              "square": 0.22163341645885287,
+              "rectangle": 0.07657938487115544,
+              "heart": 0.10816708229426433,
+              "diamond": 0.07304655029093932,
+              "triangle": 0.08780133000831256
+            },
+            "largest_class": "oval",
+            "max_share": 0.2967581047381546
+          },
+          "effective_n_classes": 5.367802357462972,
+          "effective_n_classes_ci95": {
+            "low": 5.256681291678718,
+            "high": 5.48146764025254
+          }
+        },
+        "Indian": {
+          "data_accounting": {
+            "group": "Indian",
+            "rfw_images": 10308,
+            "rfw_identities": 2984,
+            "decode_failed": 0,
+            "landmark_failed": 59,
+            "dropped_identity_below_2_after_failures_images": 5,
+            "dropped_identities_below_2": 5,
+            "analysis_images": 10244,
+            "analysis_identities": 2979
+          },
+          "n_identities": 2979,
+          "n_unordered_pairs": 13270,
+          "n_ordered_pairs": 26540,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.29766390354182365,
+          "p_top1_ci95": {
+            "low": 0.28799076967952425,
+            "high": 0.3088182974088056
+          },
+          "cohen_kappa_top1": 0.1421644801622588,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.1308324324829062,
+            "high": 0.1549307260023602
+          },
+          "chance_agreement_from_marginals": 0.18045755414813347,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.29766390354182365,
+              "p_topk_ci95": {
+                "low": 0.28799076967952425,
+                "high": 0.3088182974088056
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.18085302271890671,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.1788495049087112,
+                "high": 0.1827037827373022
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.5077995478522984,
+              "p_topk_ci95": {
+                "low": 0.4976277498193251,
+                "high": 0.5183519986204854
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.34407629426028985,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34220652715695343,
+                "high": 0.34574060261255646
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6538055764883195,
+              "p_topk_ci95": {
+                "low": 0.6444357427991848,
+                "high": 0.6629904036541548
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.48354082394105324,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.48161399192351634,
+                "high": 0.4856339724314949
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7710248681235871,
+              "p_topk_ci95": {
+                "low": 0.763160573284892,
+                "high": 0.7788886386984748
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6210979713675102,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6191740285262459,
+                "high": 0.6230660894378836
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8671439336850038,
+              "p_topk_ci95": {
+                "low": 0.8612901283427135,
+                "high": 0.8730312562344279
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.763069484385071,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7614649437112528,
+                "high": 0.7646757041371082
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9449133383571967,
+              "p_topk_ci95": {
+                "low": 0.9413202007424782,
+                "high": 0.948763591654954
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.8957087936048438,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8948165541210795,
+                "high": 0.8966064454131598
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 7844,
+              "p_top1_given_probe_class": 0.39214686384497704,
+              "ci95": {
+                "low": 0.3717059777470329,
+                "high": 0.4104651520658375
+              },
+              "share_of_images": 0.2940257711831316
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 3540,
+              "p_top1_given_probe_class": 0.21016949152542372,
+              "ci95": {
+                "low": 0.18938801201114605,
+                "high": 0.23068593332705495
+              },
+              "share_of_images": 0.13656774697383833
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 5498,
+              "p_top1_given_probe_class": 0.383048381229538,
+              "ci95": {
+                "low": 0.36152753841104696,
+                "high": 0.4076360453230381
+              },
+              "share_of_images": 0.20529090199140962
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 2622,
+              "p_top1_given_probe_class": 0.20823798627002288,
+              "ci95": {
+                "low": 0.17931247098081335,
+                "high": 0.23651426871876446
+              },
+              "share_of_images": 0.09693479109722765
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 2422,
+              "p_top1_given_probe_class": 0.20396366639141206,
+              "ci95": {
+                "low": 0.17570761810200455,
+                "high": 0.23583545918367346
+              },
+              "share_of_images": 0.09176103084732526
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 2245,
+              "p_top1_given_probe_class": 0.19955456570155902,
+              "ci95": {
+                "low": 0.1713397653222966,
+                "high": 0.23002263696806954
+              },
+              "share_of_images": 0.08561108941819602
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2369,
+              "p_top1_given_probe_class": 0.20514985225833685,
+              "ci95": {
+                "low": 0.1737633653696443,
+                "high": 0.24010319808419248
+              },
+              "share_of_images": 0.08980866848887153
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                3076,
+                900,
+                990,
+                810,
+                860,
+                682,
+                526
+              ],
+              [
+                900,
+                744,
+                831,
+                212,
+                279,
+                262,
+                312
+              ],
+              [
+                990,
+                831,
+                2106,
+                509,
+                346,
+                279,
+                437
+              ],
+              [
+                810,
+                212,
+                509,
+                546,
+                163,
+                140,
+                242
+              ],
+              [
+                860,
+                279,
+                346,
+                163,
+                494,
+                174,
+                106
+              ],
+              [
+                682,
+                262,
+                279,
+                140,
+                174,
+                448,
+                260
+              ],
+              [
+                526,
+                312,
+                437,
+                242,
+                106,
+                260,
+                486
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 3012,
+              "round": 1399,
+              "square": 2103,
+              "rectangle": 993,
+              "heart": 940,
+              "diamond": 877,
+              "triangle": 920
+            },
+            "shares": {
+              "oval": 0.2940257711831316,
+              "round": 0.13656774697383833,
+              "square": 0.20529090199140962,
+              "rectangle": 0.09693479109722765,
+              "heart": 0.09176103084732526,
+              "diamond": 0.08561108941819602,
+              "triangle": 0.08980866848887153
+            },
+            "largest_class": "oval",
+            "max_share": 0.2940257711831316
+          },
+          "effective_n_classes": 5.5414693206975585,
+          "effective_n_classes_ci95": {
+            "low": 5.426781260223725,
+            "high": 5.64507397143907
+          }
+        },
+        "African": {
+          "data_accounting": {
+            "group": "African",
+            "rfw_images": 10415,
+            "rfw_identities": 2995,
+            "decode_failed": 0,
+            "landmark_failed": 97,
+            "dropped_identity_below_2_after_failures_images": 6,
+            "dropped_identities_below_2": 7,
+            "analysis_images": 10312,
+            "analysis_identities": 2988
+          },
+          "n_identities": 2988,
+          "n_unordered_pairs": 13503,
+          "n_ordered_pairs": 27006,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.2780122935643931,
+          "p_top1_ci95": {
+            "low": 0.2681458889109138,
+            "high": 0.2878913405781234
+          },
+          "cohen_kappa_top1": 0.11672456838411233,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.10520172710129452,
+            "high": 0.12717361328431528
+          },
+          "chance_agreement_from_marginals": 0.1821281524578985,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.2780122935643931,
+              "p_topk_ci95": {
+                "low": 0.2681458889109138,
+                "high": 0.2878913405781234
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.18236230669540035,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.18038061631565616,
+                "high": 0.18432013910618825
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.4754128712138043,
+              "p_topk_ci95": {
+                "low": 0.4649349768113625,
+                "high": 0.4851345814443201
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.34665037514003555,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34498602342726525,
+                "high": 0.3484349747343957
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6180478412204695,
+              "p_topk_ci95": {
+                "low": 0.6079559078876672,
+                "high": 0.6272473562226482
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.4872100693136777,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.4854169613438719,
+                "high": 0.48911953964399996
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.737465748352218,
+              "p_topk_ci95": {
+                "low": 0.7295016398921246,
+                "high": 0.7451903508280651
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6218379329490726,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6199044646827004,
+                "high": 0.6239452544457369
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8512552766051988,
+              "p_topk_ci95": {
+                "low": 0.8453252071103164,
+                "high": 0.8571165041081485
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7665660001596049,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7650486703166872,
+                "high": 0.7682897462483056
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9403095608383322,
+              "p_topk_ci95": {
+                "low": 0.9366670551458428,
+                "high": 0.943792373191417
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.8982422921619482,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8974672911159522,
+                "high": 0.8991019864190909
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 8038,
+              "p_top1_given_probe_class": 0.384921622294103,
+              "ci95": {
+                "low": 0.36608088339808587,
+                "high": 0.4052014191977354
+              },
+              "share_of_images": 0.2965477114041893
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 3847,
+              "p_top1_given_probe_class": 0.232908760072784,
+              "ci95": {
+                "low": 0.2092285011505404,
+                "high": 0.256302484714683
+              },
+              "share_of_images": 0.14100077579519008
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 5537,
+              "p_top1_given_probe_class": 0.3326711215459635,
+              "ci95": {
+                "low": 0.3099578299261549,
+                "high": 0.353737319338484
+              },
+              "share_of_images": 0.20568269976726145
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 2474,
+              "p_top1_given_probe_class": 0.18108326596604687,
+              "ci95": {
+                "low": 0.1552979219708402,
+                "high": 0.2058233182272968
+              },
+              "share_of_images": 0.09202870442203258
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 2235,
+              "p_top1_given_probe_class": 0.1610738255033557,
+              "ci95": {
+                "low": 0.13314097058837682,
+                "high": 0.18926136749428513
+              },
+              "share_of_images": 0.08388285492629946
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 2203,
+              "p_top1_given_probe_class": 0.1407172038129823,
+              "ci95": {
+                "low": 0.11982862287337771,
+                "high": 0.16255090110743448
+              },
+              "share_of_images": 0.08204034134988362
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2672,
+              "p_top1_given_probe_class": 0.2088323353293413,
+              "ci95": {
+                "low": 0.18473789617573194,
+                "high": 0.23369941136153147
+              },
+              "share_of_images": 0.09881691233514352
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                3094,
+                1069,
+                1132,
+                720,
+                773,
+                674,
+                576
+              ],
+              [
+                1069,
+                896,
+                789,
+                207,
+                329,
+                212,
+                345
+              ],
+              [
+                1132,
+                789,
+                1842,
+                464,
+                380,
+                380,
+                550
+              ],
+              [
+                720,
+                207,
+                464,
+                448,
+                137,
+                220,
+                278
+              ],
+              [
+                773,
+                329,
+                380,
+                137,
+                360,
+                149,
+                107
+              ],
+              [
+                674,
+                212,
+                380,
+                220,
+                149,
+                310,
+                258
+              ],
+              [
+                576,
+                345,
+                550,
+                278,
+                107,
+                258,
+                558
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 3058,
+              "round": 1454,
+              "square": 2121,
+              "rectangle": 949,
+              "heart": 865,
+              "diamond": 846,
+              "triangle": 1019
+            },
+            "shares": {
+              "oval": 0.2965477114041893,
+              "round": 0.14100077579519008,
+              "square": 0.20568269976726145,
+              "rectangle": 0.09202870442203258,
+              "heart": 0.08388285492629946,
+              "diamond": 0.08204034134988362,
+              "triangle": 0.09881691233514352
+            },
+            "largest_class": "oval",
+            "max_share": 0.2965477114041893
+          },
+          "effective_n_classes": 5.490639346551127,
+          "effective_n_classes_ci95": {
+            "low": 5.384185216263976,
+            "high": 5.596502985585214
+          }
+        }
+      },
+      "between_groups": {
+        "p_top1": {
+          "pairwise": [
+            {
+              "group_a": "Caucasian",
+              "group_b": "Asian",
+              "difference_a_minus_b": -0.0033384045052740063,
+              "ci95": {
+                "low": -0.017108520629117177,
+                "high": 0.01037388268315558
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.6613386613386614,
+              "p_value_holm": 1.0,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.008294726819660814,
+              "ci95": {
+                "low": -0.022596341563477437,
+                "high": 0.0055577284340189255
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.22577422577422576,
+              "p_value_holm": 0.6773226773226773,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.011356883157769726,
+              "ci95": {
+                "low": -0.002984023450093341,
+                "high": 0.025647922721955502
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.1258741258741259,
+              "p_value_holm": 0.5034965034965035,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.004956322314386807,
+              "ci95": {
+                "low": -0.01908303165809942,
+                "high": 0.009887621199286208
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.5194805194805194,
+              "p_value_holm": 1.0,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.014695287663043732,
+              "ci95": {
+                "low": -0.0004375026245228809,
+                "high": 0.030080955631852754
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.053946053946053944,
+              "p_value_holm": 0.2697302697302697,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Indian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.01965160997743054,
+              "ci95": {
+                "low": 0.005669665475578756,
+                "high": 0.033673747964433294
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.005994005994005994,
+              "p_value_holm": 0.03596403596403597,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            }
+          ],
+          "n_significant_uncorrected": 1,
+          "n_significant_holm": 1,
+          "spread": {
+            "max_group": "Indian",
+            "min_group": "African",
+            "max_minus_min": 0.01965160997743054,
+            "ci95_replicate_max_minus_min": {
+              "low": 0.00926822537645093,
+              "high": 0.03407797941168884
+            },
+            "ci95_fixed_pair_difference": {
+              "low": 0.005669665475578756,
+              "high": 0.033673747964433294
+            }
+          }
+        },
+        "cohen_kappa_top1": {
+          "pairwise": [
+            {
+              "group_a": "Caucasian",
+              "group_b": "Asian",
+              "difference_a_minus_b": 0.00466009488075067,
+              "ci95": {
+                "low": -0.011114069349450226,
+                "high": 0.02151677426449441
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.5914085914085914,
+              "p_value_holm": 0.8191808191808192,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.0065503332902254185,
+              "ci95": {
+                "low": -0.022165314561505202,
+                "high": 0.008953190402961797
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.4095904095904096,
+              "p_value_holm": 0.8191808191808192,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.018889578487921055,
+              "ci95": {
+                "low": 0.002774266869301249,
+                "high": 0.03436430053711387
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.017982017982017984,
+              "p_value_holm": 0.08991008991008992,
+              "significant_uncorrected": true,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.011210428170976089,
+              "ci95": {
+                "low": -0.027392514559959974,
+                "high": 0.005240011740484019
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.1978021978021978,
+              "p_value_holm": 0.5934065934065934,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.014229483607170385,
+              "ci95": {
+                "low": -0.001934234327548401,
+                "high": 0.03184643363145064
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.08191808191808192,
+              "p_value_holm": 0.3276723276723277,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Indian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.025439911778146473,
+              "ci95": {
+                "low": 0.00992505973283831,
+                "high": 0.04182556759773753
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            }
+          ],
+          "n_significant_uncorrected": 2,
+          "n_significant_holm": 1,
+          "spread": {
+            "max_group": "Indian",
+            "min_group": "African",
+            "max_minus_min": 0.025439911778146473,
+            "ci95_replicate_max_minus_min": {
+              "low": 0.012626898056447707,
+              "high": 0.042284452527004066
+            },
+            "ci95_fixed_pair_difference": {
+              "low": 0.00992505973283831,
+              "high": 0.04182556759773753
+            }
+          }
+        },
+        "notes": [
+          "Groups are resampled independently: identities with replacement within each group, N_BOOTSTRAP=1000, seed stream [SEED, 41, group index]; the pair sample is the one m1_consistency draws and is held fixed.",
+          "p_value_bootstrap = 2 * min(P*(d <= 0), P*(d >= 0)) with the +1 correction; it agrees with 'ci_excludes_zero' up to percentile discreteness.",
+          "Holm step-down across the six pairwise comparisons, alpha = 0.05, separately per metric and per condition. Only significant_holm supports a claim of a difference.",
+          "Spread: point = max group minus min group by point estimate. ci95_replicate_max_minus_min is the percentile CI of max_g - min_g over replicates (biased upward when groups are equal, so it never covers zero); ci95_fixed_pair_difference is the CI of the difference for the two groups named."
+        ]
+      }
+    },
+    "B3_lfw": {
+      "description": "the stage 1 LFW standardiser applied unchanged (transfer)",
+      "groups": {
+        "Caucasian": {
+          "data_accounting": {
+            "group": "Caucasian",
+            "rfw_images": 10196,
+            "rfw_identities": 2958,
+            "decode_failed": 0,
+            "landmark_failed": 89,
+            "dropped_identity_below_2_after_failures_images": 7,
+            "dropped_identities_below_2": 8,
+            "analysis_images": 10100,
+            "analysis_identities": 2950
+          },
+          "n_identities": 2950,
+          "n_unordered_pairs": 13094,
+          "n_ordered_pairs": 26188,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.2866198258744463,
+          "p_top1_ci95": {
+            "low": 0.27718794028694144,
+            "high": 0.29682139153392145
+          },
+          "cohen_kappa_top1": 0.13598032931461096,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.12494474894940798,
+            "high": 0.14731689957014807
+          },
+          "chance_agreement_from_marginals": 0.17339601999803939,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.2866198258744463,
+              "p_topk_ci95": {
+                "low": 0.27718794028694144,
+                "high": 0.29682139153392145
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.17385882279995205,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.1723219177893371,
+                "high": 0.1754034175917206
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.4854513517641668,
+              "p_topk_ci95": {
+                "low": 0.475076916438207,
+                "high": 0.4957688896970687
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.34472246754994723,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.3427312200842007,
+                "high": 0.3467630448861375
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6307469069802963,
+              "p_topk_ci95": {
+                "low": 0.6216081689262566,
+                "high": 0.6396100524334946
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.48305462255405257,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.48088226260713823,
+                "high": 0.4852460336192972
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7525966091339544,
+              "p_topk_ci95": {
+                "low": 0.7439677083442168,
+                "high": 0.7601419782170079
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.618123862943802,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6159681754417454,
+                "high": 0.6204822890184394
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8503894913700931,
+              "p_topk_ci95": {
+                "low": 0.8440007439181544,
+                "high": 0.8564935795913444
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7499005439722196,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7480211162503347,
+                "high": 0.7518429125364792
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9319153810905758,
+              "p_topk_ci95": {
+                "low": 0.9275836920602901,
+                "high": 0.9360955576905408
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.8791854291966504,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8779648843224757,
+                "high": 0.8804166021500672
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 6933,
+              "p_top1_given_probe_class": 0.3565556036347901,
+              "ci95": {
+                "low": 0.3374417718175401,
+                "high": 0.3754220764075222
+              },
+              "share_of_images": 0.2614851485148515
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 3259,
+              "p_top1_given_probe_class": 0.21478981282602025,
+              "ci95": {
+                "low": 0.1892736027359491,
+                "high": 0.23925298357042388
+              },
+              "share_of_images": 0.12653465346534654
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 5134,
+              "p_top1_given_probe_class": 0.345539540319439,
+              "ci95": {
+                "low": 0.32226696701242374,
+                "high": 0.37006222465250743
+              },
+              "share_of_images": 0.19693069306930694
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 2525,
+              "p_top1_given_probe_class": 0.22415841584158416,
+              "ci95": {
+                "low": 0.19339596730522574,
+                "high": 0.25463469003204825
+              },
+              "share_of_images": 0.09504950495049505
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 4564,
+              "p_top1_given_probe_class": 0.30762489044697633,
+              "ci95": {
+                "low": 0.2836111894578139,
+                "high": 0.33108498943088105
+              },
+              "share_of_images": 0.17346534653465345
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 1570,
+              "p_top1_given_probe_class": 0.11847133757961784,
+              "ci95": {
+                "low": 0.09443250715313811,
+                "high": 0.14462243068253083
+              },
+              "share_of_images": 0.0597029702970297
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2203,
+              "p_top1_given_probe_class": 0.18338629142078983,
+              "ci95": {
+                "low": 0.15968291349510072,
+                "high": 0.21007339620012078
+              },
+              "share_of_images": 0.08683168316831683
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                2472,
+                769,
+                926,
+                631,
+                1144,
+                455,
+                536
+              ],
+              [
+                769,
+                700,
+                634,
+                170,
+                577,
+                159,
+                250
+              ],
+              [
+                926,
+                634,
+                1774,
+                461,
+                728,
+                228,
+                383
+              ],
+              [
+                631,
+                170,
+                461,
+                566,
+                302,
+                128,
+                267
+              ],
+              [
+                1144,
+                577,
+                728,
+                302,
+                1404,
+                230,
+                179
+              ],
+              [
+                455,
+                159,
+                228,
+                128,
+                230,
+                186,
+                184
+              ],
+              [
+                536,
+                250,
+                383,
+                267,
+                179,
+                184,
+                404
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 2641,
+              "round": 1278,
+              "square": 1989,
+              "rectangle": 960,
+              "heart": 1752,
+              "diamond": 603,
+              "triangle": 877
+            },
+            "shares": {
+              "oval": 0.2614851485148515,
+              "round": 0.12653465346534654,
+              "square": 0.19693069306930694,
+              "rectangle": 0.09504950495049505,
+              "heart": 0.17346534653465345,
+              "diamond": 0.0597029702970297,
+              "triangle": 0.08683168316831683
+            },
+            "largest_class": "oval",
+            "max_share": 0.2614851485148515
+          },
+          "effective_n_classes": 5.767145059104051,
+          "effective_n_classes_ci95": {
+            "low": 5.664560327055227,
+            "high": 5.8539335238712
+          }
+        },
+        "Asian": {
+          "data_accounting": {
+            "group": "Asian",
+            "rfw_images": 9688,
+            "rfw_identities": 2492,
+            "decode_failed": 0,
+            "landmark_failed": 61,
+            "dropped_identity_below_2_after_failures_images": 3,
+            "dropped_identities_below_2": 3,
+            "analysis_images": 9624,
+            "analysis_identities": 2489
+          },
+          "n_identities": 2489,
+          "n_unordered_pairs": 13850,
+          "n_ordered_pairs": 27700,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.2792057761732852,
+          "p_top1_ci95": {
+            "low": 0.26915834354384316,
+            "high": 0.2892304209261827
+          },
+          "cohen_kappa_top1": 0.12510743673248237,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.11341056291707535,
+            "high": 0.1366552944292867
+          },
+          "chance_agreement_from_marginals": 0.17620509114440275,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.2792057761732852,
+              "p_topk_ci95": {
+                "low": 0.26915834354384316,
+                "high": 0.2892304209261827
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.1761570277075062,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.17460567732643426,
+                "high": 0.17746476884359502
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.47184115523465703,
+              "p_topk_ci95": {
+                "low": 0.46124872708009795,
+                "high": 0.4821786101611485
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.34466481584846576,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.34206350208608227,
+                "high": 0.3469768032034074
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6147292418772563,
+              "p_topk_ci95": {
+                "low": 0.604747752717959,
+                "high": 0.6243199234986325
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.4804668870843358,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.477907693796909,
+                "high": 0.4827296093682731
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7384115523465704,
+              "p_topk_ci95": {
+                "low": 0.730208598034664,
+                "high": 0.7467533520305893
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6154562975833578,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.612891598297902,
+                "high": 0.6178481590412482
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.835812274368231,
+              "p_topk_ci95": {
+                "low": 0.8291851703229742,
+                "high": 0.8425574675193197
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7441973135752673,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7416815958795292,
+                "high": 0.7465298891679633
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.923898916967509,
+              "p_topk_ci95": {
+                "low": 0.9195728311836325,
+                "high": 0.9281671656717407
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.87664676680741,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8746220086127499,
+                "high": 0.8785579430788467
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 6175,
+              "p_top1_given_probe_class": 0.29182186234817814,
+              "ci95": {
+                "low": 0.27310304090076576,
+                "high": 0.31215582632152633
+              },
+              "share_of_images": 0.2231920199501247
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 3217,
+              "p_top1_given_probe_class": 0.2064034815045073,
+              "ci95": {
+                "low": 0.18086117877288543,
+                "high": 0.23360460552862425
+              },
+              "share_of_images": 0.1172069825436409
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 5174,
+              "p_top1_given_probe_class": 0.32701971395438734,
+              "ci95": {
+                "low": 0.30442671280009775,
+                "high": 0.34969931223078266
+              },
+              "share_of_images": 0.19046134663341646
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 1137,
+              "p_top1_given_probe_class": 0.10729991204925242,
+              "ci95": {
+                "low": 0.07648824736396297,
+                "high": 0.13867472924187724
+              },
+              "share_of_images": 0.040731504571903575
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 6447,
+              "p_top1_given_probe_class": 0.37319683573755236,
+              "ci95": {
+                "low": 0.34715565227879025,
+                "high": 0.3966090224480071
+              },
+              "share_of_images": 0.22984206151288444
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 3680,
+              "p_top1_given_probe_class": 0.21032608695652175,
+              "ci95": {
+                "low": 0.18848995262588264,
+                "high": 0.23390214162602221
+              },
+              "share_of_images": 0.1322734829592685
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 1870,
+              "p_top1_given_probe_class": 0.146524064171123,
+              "ci95": {
+                "low": 0.12040830328260063,
+                "high": 0.1725150073980131
+              },
+              "share_of_images": 0.06629260182876143
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                1802,
+                663,
+                837,
+                271,
+                1366,
+                854,
+                382
+              ],
+              [
+                663,
+                664,
+                634,
+                87,
+                609,
+                333,
+                227
+              ],
+              [
+                837,
+                634,
+                1692,
+                219,
+                859,
+                532,
+                401
+              ],
+              [
+                271,
+                87,
+                219,
+                122,
+                199,
+                145,
+                94
+              ],
+              [
+                1366,
+                609,
+                859,
+                199,
+                2406,
+                779,
+                229
+              ],
+              [
+                854,
+                333,
+                532,
+                145,
+                779,
+                774,
+                263
+              ],
+              [
+                382,
+                227,
+                401,
+                94,
+                229,
+                263,
+                274
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 2148,
+              "round": 1128,
+              "square": 1833,
+              "rectangle": 392,
+              "heart": 2212,
+              "diamond": 1273,
+              "triangle": 638
+            },
+            "shares": {
+              "oval": 0.2231920199501247,
+              "round": 0.1172069825436409,
+              "square": 0.19046134663341646,
+              "rectangle": 0.040731504571903575,
+              "heart": 0.22984206151288444,
+              "diamond": 0.1322734829592685,
+              "triangle": 0.06629260182876143
+            },
+            "largest_class": "heart",
+            "max_share": 0.22984206151288444
+          },
+          "effective_n_classes": 5.675204918911707,
+          "effective_n_classes_ci95": {
+            "low": 5.577525029808869,
+            "high": 5.763040149144239
+          }
+        },
+        "Indian": {
+          "data_accounting": {
+            "group": "Indian",
+            "rfw_images": 10308,
+            "rfw_identities": 2984,
+            "decode_failed": 0,
+            "landmark_failed": 59,
+            "dropped_identity_below_2_after_failures_images": 5,
+            "dropped_identities_below_2": 5,
+            "analysis_images": 10244,
+            "analysis_identities": 2979
+          },
+          "n_identities": 2979,
+          "n_unordered_pairs": 13270,
+          "n_ordered_pairs": 26540,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.3281085154483798,
+          "p_top1_ci95": {
+            "low": 0.3173461928053045,
+            "high": 0.3407363018410986
+          },
+          "cohen_kappa_top1": 0.1567380589569537,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.14458346293560043,
+            "high": 0.17033117738125442
+          },
+          "chance_agreement_from_marginals": 0.20181541492617236,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.3281085154483798,
+              "p_topk_ci95": {
+                "low": 0.3173461928053045,
+                "high": 0.3407363018410986
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.20250838471219365,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.19959793956994915,
+                "high": 0.205537298010945
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.5174453654860588,
+              "p_topk_ci95": {
+                "low": 0.5063578568210406,
+                "high": 0.528530747859136
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.35940854749242845,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.35662636360632766,
+                "high": 0.36193587072987216
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.6565184626978147,
+              "p_topk_ci95": {
+                "low": 0.6471706006579029,
+                "high": 0.6665831324100213
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.49459554982025644,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.4918516757035671,
+                "high": 0.49728470669546093
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.7718914845516202,
+              "p_topk_ci95": {
+                "low": 0.7640053504338968,
+                "high": 0.7797808030488699
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.6331448526341593,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6302583945237743,
+                "high": 0.6359301407584383
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.8624717407686511,
+              "p_topk_ci95": {
+                "low": 0.8563660839930815,
+                "high": 0.868347656775657
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.7658846562856485,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7635082599241194,
+                "high": 0.7684657290087454
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9394122079879428,
+              "p_topk_ci95": {
+                "low": 0.9354393407615069,
+                "high": 0.943111361550004
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.8919581135147865,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8905677895272196,
+                "high": 0.8933840183940124
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 4609,
+              "p_top1_given_probe_class": 0.2720763723150358,
+              "ci95": {
+                "low": 0.2480476984307597,
+                "high": 0.2946296966835353
+              },
+              "share_of_images": 0.17258883248730963
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 3301,
+              "p_top1_given_probe_class": 0.19266888821569222,
+              "ci95": {
+                "low": 0.17239073708032063,
+                "high": 0.21352913239210475
+              },
+              "share_of_images": 0.1274892620070285
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 9274,
+              "p_top1_given_probe_class": 0.5044209618287686,
+              "ci95": {
+                "low": 0.48522096358713135,
+                "high": 0.5239999588336798
+              },
+              "share_of_images": 0.3466419367434596
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 1955,
+              "p_top1_given_probe_class": 0.17289002557544758,
+              "ci95": {
+                "low": 0.14285518161135952,
+                "high": 0.20301507537688443
+              },
+              "share_of_images": 0.07262787973447872
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 3815,
+              "p_top1_given_probe_class": 0.2998689384010485,
+              "ci95": {
+                "low": 0.27241916779391917,
+                "high": 0.329810421103084
+              },
+              "share_of_images": 0.1441819601718079
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 1483,
+              "p_top1_given_probe_class": 0.16857720836142953,
+              "ci95": {
+                "low": 0.13566216534300435,
+                "high": 0.20554971243499529
+              },
+              "share_of_images": 0.057301835220616944
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 2103,
+              "p_top1_given_probe_class": 0.19400855920114124,
+              "ci95": {
+                "low": 0.15967000936397832,
+                "high": 0.2286365551638944
+              },
+              "share_of_images": 0.07916829363529872
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                1254,
+                513,
+                1049,
+                441,
+                730,
+                305,
+                317
+              ],
+              [
+                513,
+                636,
+                1113,
+                141,
+                444,
+                196,
+                258
+              ],
+              [
+                1049,
+                1113,
+                4678,
+                590,
+                932,
+                290,
+                622
+              ],
+              [
+                441,
+                141,
+                590,
+                338,
+                201,
+                66,
+                178
+              ],
+              [
+                730,
+                444,
+                932,
+                201,
+                1144,
+                210,
+                154
+              ],
+              [
+                305,
+                196,
+                290,
+                66,
+                210,
+                250,
+                166
+              ],
+              [
+                317,
+                258,
+                622,
+                178,
+                154,
+                166,
+                408
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 1768,
+              "round": 1306,
+              "square": 3551,
+              "rectangle": 744,
+              "heart": 1477,
+              "diamond": 587,
+              "triangle": 811
+            },
+            "shares": {
+              "oval": 0.17258883248730963,
+              "round": 0.1274892620070285,
+              "square": 0.3466419367434596,
+              "rectangle": 0.07262787973447872,
+              "heart": 0.1441819601718079,
+              "diamond": 0.057301835220616944,
+              "triangle": 0.07916829363529872
+            },
+            "largest_class": "square",
+            "max_share": 0.3466419367434596
+          },
+          "effective_n_classes": 4.955022887452961,
+          "effective_n_classes_ci95": {
+            "low": 4.820313846992746,
+            "high": 5.084450728771002
+          }
+        },
+        "African": {
+          "data_accounting": {
+            "group": "African",
+            "rfw_images": 10415,
+            "rfw_identities": 2995,
+            "decode_failed": 0,
+            "landmark_failed": 97,
+            "dropped_identity_below_2_after_failures_images": 6,
+            "dropped_identities_below_2": 7,
+            "analysis_images": 10312,
+            "analysis_identities": 2988
+          },
+          "n_identities": 2988,
+          "n_unordered_pairs": 13503,
+          "n_ordered_pairs": 27006,
+          "max_pairs_per_identity": 10,
+          "p_top1": 0.3280752425386951,
+          "p_top1_ci95": {
+            "low": 0.3183289146357328,
+            "high": 0.33795197591519116
+          },
+          "cohen_kappa_top1": 0.10586664504621228,
+          "cohen_kappa_top1_ci95": {
+            "low": 0.0944336176564611,
+            "high": 0.11746749205856913
+          },
+          "chance_agreement_from_marginals": 0.2478943803599232,
+          "multi_probe": [
+            {
+              "k": 1,
+              "p_topk": 0.3280752425386951,
+              "p_topk_ci95": {
+                "low": 0.3183289146357328,
+                "high": 0.33795197591519116
+              },
+              "mean_classes_searched": 1.0,
+              "mean_gallery_fraction_searched": 0.24820305785566021,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.24595775951911905,
+                "high": 0.2506872638064288
+              }
+            },
+            {
+              "k": 2,
+              "p_topk": 0.5577279123157817,
+              "p_topk_ci95": {
+                "low": 0.5478227047991842,
+                "high": 0.5681049068293462
+              },
+              "mean_classes_searched": 2.0,
+              "mean_gallery_fraction_searched": 0.4640120917875507,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.4610354043853665,
+                "high": 0.4669007098590196
+              }
+            },
+            {
+              "k": 3,
+              "p_topk": 0.7371695178849145,
+              "p_topk_ci95": {
+                "low": 0.7280303859993494,
+                "high": 0.7462144141031264
+              },
+              "mean_classes_searched": 3.0,
+              "mean_gallery_fraction_searched": 0.6514697233904923,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.6478013845190171,
+                "high": 0.6549666506364203
+              }
+            },
+            {
+              "k": 4,
+              "p_topk": 0.8485892023994668,
+              "p_topk_ci95": {
+                "low": 0.8418211341747214,
+                "high": 0.8557176679017497
+              },
+              "mean_classes_searched": 4.0,
+              "mean_gallery_fraction_searched": 0.7850077974512103,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.7819333367401846,
+                "high": 0.7883824421458696
+              }
+            },
+            {
+              "k": 5,
+              "p_topk": 0.9186847367251721,
+              "p_topk_ci95": {
+                "low": 0.9137886859900879,
+                "high": 0.9236244575431103
+              },
+              "mean_classes_searched": 5.0,
+              "mean_gallery_fraction_searched": 0.8732742068868695,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.8711704937173635,
+                "high": 0.8754059258504698
+              }
+            },
+            {
+              "k": 6,
+              "p_topk": 0.9673776197881953,
+              "p_topk_ci95": {
+                "low": 0.9646995668553715,
+                "high": 0.9703057002291482
+              },
+              "mean_classes_searched": 6.0,
+              "mean_gallery_fraction_searched": 0.9428128547935776,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 0.9412758971552114,
+                "high": 0.9443041606313958
+              }
+            },
+            {
+              "k": 7,
+              "p_topk": 1.0,
+              "p_topk_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              },
+              "mean_classes_searched": 7.0,
+              "mean_gallery_fraction_searched": 1.0,
+              "mean_gallery_fraction_searched_ci95": {
+                "low": 1.0,
+                "high": 1.0
+              }
+            }
+          ],
+          "per_class": {
+            "oval": {
+              "n_ordered_pairs_with_probe_in_class": 6790,
+              "p_top1_given_probe_class": 0.34933726067746684,
+              "ci95": {
+                "low": 0.32811450064906295,
+                "high": 0.3682938293420135
+              },
+              "share_of_images": 0.25
+            },
+            "round": {
+              "n_ordered_pairs_with_probe_in_class": 9962,
+              "p_top1_given_probe_class": 0.43224252158201165,
+              "ci95": {
+                "low": 0.41648998932947723,
+                "high": 0.4475489068916683
+              },
+              "share_of_images": 0.3681148176881303
+            },
+            "square": {
+              "n_ordered_pairs_with_probe_in_class": 3773,
+              "p_top1_given_probe_class": 0.24277763053273257,
+              "ci95": {
+                "low": 0.21987730237797545,
+                "high": 0.26621543286314886
+              },
+              "share_of_images": 0.14022498060512026
+            },
+            "rectangle": {
+              "n_ordered_pairs_with_probe_in_class": 513,
+              "p_top1_given_probe_class": 0.05847953216374269,
+              "ci95": {
+                "low": 0.028167599977374287,
+                "high": 0.0916030534351145
+              },
+              "share_of_images": 0.01978277734678045
+            },
+            "heart": {
+              "n_ordered_pairs_with_probe_in_class": 4463,
+              "p_top1_given_probe_class": 0.2518485323773247,
+              "ci95": {
+                "low": 0.22826243453068887,
+                "high": 0.2760715564961391
+              },
+              "share_of_images": 0.16689294026377036
+            },
+            "diamond": {
+              "n_ordered_pairs_with_probe_in_class": 331,
+              "p_top1_given_probe_class": 0.012084592145015106,
+              "ci95": {
+                "low": 0.0,
+                "high": 0.030675238887232673
+              },
+              "share_of_images": 0.012218774243599689
+            },
+            "triangle": {
+              "n_ordered_pairs_with_probe_in_class": 1174,
+              "p_top1_given_probe_class": 0.0919931856899489,
+              "ci95": {
+                "low": 0.07062827416180319,
+                "high": 0.1153557313781449
+              },
+              "share_of_images": 0.042765709852598914
+            }
+          },
+          "pair_confusion_ordered": {
+            "classes": [
+              "oval",
+              "round",
+              "square",
+              "rectangle",
+              "heart",
+              "diamond",
+              "triangle"
+            ],
+            "rows_probe_cols_gallery": [
+              [
+                2372,
+                2092,
+                674,
+                153,
+                1134,
+                97,
+                268
+              ],
+              [
+                2092,
+                4306,
+                1370,
+                140,
+                1502,
+                99,
+                453
+              ],
+              [
+                674,
+                1370,
+                916,
+                80,
+                484,
+                43,
+                206
+              ],
+              [
+                153,
+                140,
+                80,
+                30,
+                69,
+                11,
+                30
+              ],
+              [
+                1134,
+                1502,
+                484,
+                69,
+                1124,
+                59,
+                91
+              ],
+              [
+                97,
+                99,
+                43,
+                11,
+                59,
+                4,
+                18
+              ],
+              [
+                268,
+                453,
+                206,
+                30,
+                91,
+                18,
+                108
+              ]
+            ]
+          },
+          "notes": [
+            "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+            "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+            "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+            "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+          ],
+          "class_distribution": {
+            "counts": {
+              "oval": 2578,
+              "round": 3796,
+              "square": 1446,
+              "rectangle": 204,
+              "heart": 1721,
+              "diamond": 126,
+              "triangle": 441
+            },
+            "shares": {
+              "oval": 0.25,
+              "round": 0.3681148176881303,
+              "square": 0.14022498060512026,
+              "rectangle": 0.01978277734678045,
+              "heart": 0.16689294026377036,
+              "diamond": 0.012218774243599689,
+              "triangle": 0.042765709852598914
+            },
+            "largest_class": "round",
+            "max_share": 0.3681148176881303
+          },
+          "effective_n_classes": 4.033976077021506,
+          "effective_n_classes_ci95": {
+            "low": 3.9583068808404582,
+            "high": 4.106699142391413
+          }
+        }
+      },
+      "between_groups": {
+        "p_top1": {
+          "pairwise": [
+            {
+              "group_a": "Caucasian",
+              "group_b": "Asian",
+              "difference_a_minus_b": 0.007414049701161107,
+              "ci95": {
+                "low": -0.0064342124873762955,
+                "high": 0.01995817769785632
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.27372627372627373,
+              "p_value_holm": 0.5474525474525475,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.041488689573933535,
+              "ci95": {
+                "low": -0.055375732358368866,
+                "high": -0.025899482092493615
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "African",
+              "difference_a_minus_b": -0.04145541666424879,
+              "ci95": {
+                "low": -0.05507377856970292,
+                "high": -0.02788688074842266
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.04890273927509464,
+              "ci95": {
+                "low": -0.06322023298304143,
+                "high": -0.03406183263206981
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "African",
+              "difference_a_minus_b": -0.0488694663654099,
+              "ci95": {
+                "low": -0.06318845661147036,
+                "high": -0.03466795397363902
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Indian",
+              "group_b": "African",
+              "difference_a_minus_b": 3.3272909684745056e-05,
+              "ci95": {
+                "low": -0.015892116787591854,
+                "high": 0.014443979522559434
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.9470529470529471,
+              "p_value_holm": 0.9470529470529471,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            }
+          ],
+          "n_significant_uncorrected": 4,
+          "n_significant_holm": 4,
+          "spread": {
+            "max_group": "Indian",
+            "min_group": "Asian",
+            "max_minus_min": 0.04890273927509464,
+            "ci95_replicate_max_minus_min": {
+              "low": 0.040010420394356976,
+              "high": 0.06433904075308368
+            },
+            "ci95_fixed_pair_difference": {
+              "low": 0.03406183263206981,
+              "high": 0.06322023298304143
+            }
+          }
+        },
+        "cohen_kappa_top1": {
+          "pairwise": [
+            {
+              "group_a": "Caucasian",
+              "group_b": "Asian",
+              "difference_a_minus_b": 0.01087289258212859,
+              "ci95": {
+                "low": -0.005387993095500951,
+                "high": 0.02607553681475239
+              },
+              "ci_excludes_zero": false,
+              "p_value_bootstrap": 0.1838161838161838,
+              "p_value_holm": 0.1838161838161838,
+              "significant_uncorrected": false,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.020757729642342737,
+              "ci95": {
+                "low": -0.0368072647145921,
+                "high": -0.0037421136089096758
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.017982017982017984,
+              "p_value_holm": 0.05394605394605395,
+              "significant_uncorrected": true,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Caucasian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.03011368426839868,
+              "ci95": {
+                "low": 0.013901199870888344,
+                "high": 0.046416810966226525
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "Indian",
+              "difference_a_minus_b": -0.03163062222447133,
+              "ci95": {
+                "low": -0.04748776765657023,
+                "high": -0.014859010040883257
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.003996003996003996,
+              "p_value_holm": 0.015984015984015984,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            },
+            {
+              "group_a": "Asian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.01924079168627009,
+              "ci95": {
+                "low": 0.0020721838356238162,
+                "high": 0.03647072668333809
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.017982017982017984,
+              "p_value_holm": 0.05394605394605395,
+              "significant_uncorrected": true,
+              "significant_holm": false
+            },
+            {
+              "group_a": "Indian",
+              "group_b": "African",
+              "difference_a_minus_b": 0.05087141391074142,
+              "ci95": {
+                "low": 0.033214033314811056,
+                "high": 0.06769767640779212
+              },
+              "ci_excludes_zero": true,
+              "p_value_bootstrap": 0.001998001998001998,
+              "p_value_holm": 0.011988011988011988,
+              "significant_uncorrected": true,
+              "significant_holm": true
+            }
+          ],
+          "n_significant_uncorrected": 5,
+          "n_significant_holm": 3,
+          "spread": {
+            "max_group": "Indian",
+            "min_group": "African",
+            "max_minus_min": 0.05087141391074142,
+            "ci95_replicate_max_minus_min": {
+              "low": 0.033712495357671096,
+              "high": 0.06769767640779212
+            },
+            "ci95_fixed_pair_difference": {
+              "low": 0.033214033314811056,
+              "high": 0.06769767640779212
+            }
+          }
+        },
+        "notes": [
+          "Groups are resampled independently: identities with replacement within each group, N_BOOTSTRAP=1000, seed stream [SEED, 41, group index]; the pair sample is the one m1_consistency draws and is held fixed.",
+          "p_value_bootstrap = 2 * min(P*(d <= 0), P*(d >= 0)) with the +1 correction; it agrees with 'ci_excludes_zero' up to percentile discreteness.",
+          "Holm step-down across the six pairwise comparisons, alpha = 0.05, separately per metric and per condition. Only significant_holm supports a claim of a difference.",
+          "Spread: point = max group minus min group by point estimate. ci95_replicate_max_minus_min is the percentile CI of max_g - min_g over replicates (biased upward when groups are equal, so it never covers zero); ci95_fixed_pair_difference is the CI of the difference for the two groups named."
+        ]
+      }
+    }
+  },
+  "effective_n_classes_ci_note": "effective_n_classes_ci95 uses the pairwise-comparison bootstrap weights (identities resampled within group)."
+}

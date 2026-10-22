@@ -1,0 +1,188 @@
+{
+  "measurement": "2_class_distribution",
+  "seed": 20261017,
+  "dataset": "LFW (funneled), identities with >= 2 images, via sklearn.datasets.fetch_lfw_people",
+  "dataset_limitations": "LFW is demographically skewed (predominantly male, lighter-skinned, middle-aged public figures) and consists of news photographs of public figures. This is acceptable for a pilot that asks whether the routing mechanism works at all. It is not acceptable for the fairness analysis in the paper, which requires a demographically balanced set.",
+  "router": {
+    "landmarks": {
+      "forehead_width": [
+        54,
+        284
+      ],
+      "cheekbone_width": [
+        234,
+        454
+      ],
+      "jaw_width": [
+        172,
+        397
+      ],
+      "face_length": [
+        10,
+        152
+      ],
+      "jaw_angle_left_vertex_ramus_chin": [
+        172,
+        234,
+        152
+      ],
+      "jaw_angle_right_vertex_ramus_chin": [
+        397,
+        454,
+        152
+      ]
+    },
+    "features": [
+      "L_length_over_cheek",
+      "F_forehead_over_cheek",
+      "J_jaw_over_cheek",
+      "A_jaw_angle_deg"
+    ],
+    "standardisation": "robust: (x - median) / (IQR / 1.349), statistics over all images with landmarks",
+    "prototypes": {
+      "oval": [
+        0.5,
+        0.5,
+        -0.5,
+        0.5
+      ],
+      "round": [
+        -1.0,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "square": [
+        -1.0,
+        0.0,
+        1.0,
+        -1.0
+      ],
+      "rectangle": [
+        1.5,
+        0.0,
+        0.5,
+        -1.0
+      ],
+      "heart": [
+        0.0,
+        1.5,
+        -1.5,
+        0.0
+      ],
+      "diamond": [
+        0.5,
+        -1.5,
+        -1.0,
+        0.0
+      ],
+      "triangle": [
+        0.0,
+        -1.5,
+        1.5,
+        0.0
+      ]
+    },
+    "prototype_width": 1.0,
+    "softmax_temperature": 1.0,
+    "trained_on_identity": false
+  },
+  "embedding": "InsightFace buffalo_l ArcFace R50 (WebFace600K), L2-normalised, 512-d",
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": null,
+      "torchvision": null
+    },
+    "utc_time": "2026-10-17T21:01:02+00:00"
+  },
+  "data_accounting": {
+    "lfw_images_ge2": 9164,
+    "lfw_identities_ge2": 1680,
+    "landmark_failed": 10,
+    "embedding_failed": 0,
+    "either_failed": 10,
+    "dropped_identity_below_2_after_failures_images": 3,
+    "analysis_images": 9151,
+    "analysis_identities": 1677
+  },
+  "over_images": {
+    "n": 9151,
+    "counts": {
+      "oval": 2777,
+      "round": 1092,
+      "square": 1928,
+      "rectangle": 730,
+      "heart": 932,
+      "diamond": 683,
+      "triangle": 1009
+    },
+    "shares": {
+      "oval": 0.3034641022839034,
+      "round": 0.11933122063162496,
+      "square": 0.21068735657305213,
+      "rectangle": 0.07977270243689215,
+      "heart": 0.10184679270025133,
+      "diamond": 0.07463665173205114,
+      "triangle": 0.11026117364222489
+    },
+    "largest_class": "oval",
+    "largest_class_share": 0.3034641022839034,
+    "max_reduction": 3.2952826791501617,
+    "entropy_bits": 2.6182667701873443,
+    "entropy_max_bits": 2.807354922057604,
+    "entropy_normalised": 0.9326454413068402,
+    "effective_number_of_classes": 6.140119654723504
+  },
+  "over_identities": {
+    "n": 1677,
+    "counts": {
+      "oval": 564,
+      "round": 169,
+      "square": 429,
+      "rectangle": 118,
+      "heart": 148,
+      "diamond": 105,
+      "triangle": 144
+    },
+    "shares": {
+      "oval": 0.3363148479427549,
+      "round": 0.10077519379844961,
+      "square": 0.2558139534883721,
+      "rectangle": 0.07036374478234943,
+      "heart": 0.08825283243887895,
+      "diamond": 0.0626118067978533,
+      "triangle": 0.08586762075134168
+    },
+    "largest_class": "oval",
+    "largest_class_share": 0.3363148479427549,
+    "max_reduction": 2.973404255319149,
+    "entropy_bits": 2.4984259113864504,
+    "entropy_max_bits": 2.807354922057604,
+    "entropy_normalised": 0.8899572660927642,
+    "effective_number_of_classes": 5.650685562626716
+  },
+  "mean_probability_mass_per_class": {
+    "oval": 0.24196871667502057,
+    "round": 0.13962330849793442,
+    "square": 0.18023151645202368,
+    "rectangle": 0.09977400289718796,
+    "heart": 0.12507878119276014,
+    "diamond": 0.09789798885961619,
+    "triangle": 0.11542568542545703
+  },
+  "notes": [
+    "Identity label = argmax of the mean probability vector over that identity's images.",
+    "The router standardises its features over this image set (no identity labels used). Class balance is therefore partly a consequence of where the prototypes sit in standard-score space, not only of the faces. A different, equally defensible prototype placement would give a different distribution."
+  ]
+}

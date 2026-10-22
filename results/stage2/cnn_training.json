@@ -1,0 +1,463 @@
+{
+  "seed": 20261017,
+  "dataset": {
+    "name": "Kaggle Face Shape Dataset (lama2019faceshapedataset)",
+    "kaggle_id": "niten19/face-shape-dataset",
+    "license": "CC0: Public Domain",
+    "integrity_file": "kaggle_integrity.json",
+    "n_decoded": 4998,
+    "decode_failed": [
+      "extracted/FaceShape Dataset/training_set/Heart/heart (633).jpg",
+      "extracted/FaceShape Dataset/training_set/Square/square (84).jpg"
+    ]
+  },
+  "preprocessing": {
+    "detector": "SCRFD (buffalo_l det_10g), det_size 320, face nearest image centre",
+    "detector_providers_in_use": {
+      "detection": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "recognition": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ]
+    },
+    "kaggle_max_side_px": 800,
+    "crop_scale": 1.5,
+    "crop_up_shift": 0.1,
+    "crop_size": 224,
+    "border": "replicate"
+  },
+  "detection": {
+    "train": {
+      "n": 3998,
+      "face_found": 3998,
+      "no_face": 0
+    },
+    "test": {
+      "n": 1000,
+      "face_found": 1000,
+      "no_face": 0
+    }
+  },
+  "split": {
+    "train_used": 3598,
+    "validation_held_out_from_train": 400,
+    "validation_fraction_per_class": 0.1,
+    "validation_seed_stream": [
+      20261017,
+      6
+    ],
+    "test": 1000
+  },
+  "training": {
+    "epochs": 20,
+    "batch_size": 32,
+    "optimizer": "AdamW",
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "schedule": "cosine annealing over epochs",
+    "loss": "cross-entropy",
+    "augmentation": {
+      "random_resized_crop_scale": [
+        0.85,
+        1.0
+      ],
+      "random_resized_crop_ratio": [
+        0.95,
+        1.05
+      ],
+      "horizontal_flip_p": 0.5,
+      "rotation_deg": 10.0,
+      "color_jitter": {
+        "brightness": 0.2,
+        "contrast": 0.2,
+        "saturation": 0.1,
+        "hue": 0.02
+      }
+    },
+    "determinism": "torch.use_deterministic_algorithms(True, warn_only=True), cudnn.deterministic, CUBLAS_WORKSPACE_CONFIG=:4096:8, fixed seed",
+    "selection": "epoch and backbone by validation accuracy; test evaluated once, selected model only"
+  },
+  "runs": {
+    "efficientnet_b0": {
+      "pretrained_weights": "torchvision EfficientNet_B0_Weights.IMAGENET1K_V1",
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 1.2349417834496617,
+          "train_acc": 0.49416342412451364,
+          "val_acc": 0.6325,
+          "seconds": 39.390830516815186
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.6985179541374724,
+          "train_acc": 0.7392996108949417,
+          "val_acc": 0.735,
+          "seconds": 44.48031735420227
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.48654665826525273,
+          "train_acc": 0.8212896053362979,
+          "val_acc": 0.8025,
+          "seconds": 47.53601026535034
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.35393351140851903,
+          "train_acc": 0.8743746525847693,
+          "val_acc": 0.8375,
+          "seconds": 47.74639892578125
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.27573576251489046,
+          "train_acc": 0.9016120066703724,
+          "val_acc": 0.8425,
+          "seconds": 47.0751736164093
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.21021917073046784,
+          "train_acc": 0.9244024458032241,
+          "val_acc": 0.805,
+          "seconds": 48.16472315788269
+        },
+        {
+          "epoch": 7,
+          "train_loss": 0.18150703780448324,
+          "train_acc": 0.9388549193996665,
+          "val_acc": 0.815,
+          "seconds": 51.85829496383667
+        },
+        {
+          "epoch": 8,
+          "train_loss": 0.14803406303378858,
+          "train_acc": 0.9471928849360756,
+          "val_acc": 0.8625,
+          "seconds": 49.18942213058472
+        },
+        {
+          "epoch": 9,
+          "train_loss": 0.1059889822345167,
+          "train_acc": 0.9633129516397999,
+          "val_acc": 0.87,
+          "seconds": 51.07430291175842
+        },
+        {
+          "epoch": 10,
+          "train_loss": 0.09431794548760261,
+          "train_acc": 0.9666481378543635,
+          "val_acc": 0.88,
+          "seconds": 51.76193618774414
+        },
+        {
+          "epoch": 11,
+          "train_loss": 0.081077173178298,
+          "train_acc": 0.9724847137298499,
+          "val_acc": 0.885,
+          "seconds": 52.51954650878906
+        },
+        {
+          "epoch": 12,
+          "train_loss": 0.07138826577546796,
+          "train_acc": 0.9777654252362423,
+          "val_acc": 0.8725,
+          "seconds": 50.602641105651855
+        },
+        {
+          "epoch": 13,
+          "train_loss": 0.05172114950574193,
+          "train_acc": 0.9822123401889938,
+          "val_acc": 0.8825,
+          "seconds": 51.79522967338562
+        },
+        {
+          "epoch": 14,
+          "train_loss": 0.05083124080011254,
+          "train_acc": 0.9847137298499167,
+          "val_acc": 0.8775,
+          "seconds": 51.13316106796265
+        },
+        {
+          "epoch": 15,
+          "train_loss": 0.053014060615946546,
+          "train_acc": 0.9838799332962757,
+          "val_acc": 0.8875,
+          "seconds": 51.742488861083984
+        },
+        {
+          "epoch": 16,
+          "train_loss": 0.038600460185113886,
+          "train_acc": 0.9880489160644803,
+          "val_acc": 0.885,
+          "seconds": 50.99299073219299
+        },
+        {
+          "epoch": 17,
+          "train_loss": 0.031962371699971716,
+          "train_acc": 0.9899944413563091,
+          "val_acc": 0.885,
+          "seconds": 52.774333238601685
+        },
+        {
+          "epoch": 18,
+          "train_loss": 0.029052463828639363,
+          "train_acc": 0.9897165091717621,
+          "val_acc": 0.8875,
+          "seconds": 50.89638161659241
+        },
+        {
+          "epoch": 19,
+          "train_loss": 0.02878614268232015,
+          "train_acc": 0.991106170094497,
+          "val_acc": 0.8875,
+          "seconds": 51.16037154197693
+        },
+        {
+          "epoch": 20,
+          "train_loss": 0.03331668003192539,
+          "train_acc": 0.9894385769872152,
+          "val_acc": 0.885,
+          "seconds": 50.44588804244995
+        }
+      ],
+      "best_epoch": 15,
+      "best_val_acc": 0.8875
+    },
+    "resnet50": {
+      "pretrained_weights": "torchvision ResNet50_Weights.IMAGENET1K_V2",
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 1.158601565318614,
+          "train_acc": 0.5239021678710395,
+          "val_acc": 0.685,
+          "seconds": 60.151272773742676
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.6987896597736607,
+          "train_acc": 0.7487493051695386,
+          "val_acc": 0.6325,
+          "seconds": 64.1667845249176
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.5032795663175482,
+          "train_acc": 0.8126737076153419,
+          "val_acc": 0.7075,
+          "seconds": 67.77894306182861
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.3830679231481197,
+          "train_acc": 0.8638132295719845,
+          "val_acc": 0.78,
+          "seconds": 64.10073518753052
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.2958238022303568,
+          "train_acc": 0.8971650917176209,
+          "val_acc": 0.8275,
+          "seconds": 64.57436037063599
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.24247442968624575,
+          "train_acc": 0.9118954974986103,
+          "val_acc": 0.85,
+          "seconds": 65.12998628616333
+        },
+        {
+          "epoch": 7,
+          "train_loss": 0.18370097897130958,
+          "train_acc": 0.9408004446914953,
+          "val_acc": 0.855,
+          "seconds": 67.88055515289307
+        },
+        {
+          "epoch": 8,
+          "train_loss": 0.17112914860878076,
+          "train_acc": 0.9424680377987771,
+          "val_acc": 0.88,
+          "seconds": 66.68253469467163
+        },
+        {
+          "epoch": 9,
+          "train_loss": 0.11518117506315868,
+          "train_acc": 0.9594219010561423,
+          "val_acc": 0.86,
+          "seconds": 66.45035529136658
+        },
+        {
+          "epoch": 10,
+          "train_loss": 0.09556321781118292,
+          "train_acc": 0.9649805447470817,
+          "val_acc": 0.85,
+          "seconds": 64.71589255332947
+        },
+        {
+          "epoch": 11,
+          "train_loss": 0.08607106557682265,
+          "train_acc": 0.9705391884380211,
+          "val_acc": 0.8775,
+          "seconds": 66.83476257324219
+        },
+        {
+          "epoch": 12,
+          "train_loss": 0.05766942178320063,
+          "train_acc": 0.9788771539744302,
+          "val_acc": 0.8625,
+          "seconds": 66.68705725669861
+        },
+        {
+          "epoch": 13,
+          "train_loss": 0.050496011743608814,
+          "train_acc": 0.9844357976653697,
+          "val_acc": 0.88,
+          "seconds": 66.14481949806213
+        },
+        {
+          "epoch": 14,
+          "train_loss": 0.037067435398126326,
+          "train_acc": 0.9877709838799333,
+          "val_acc": 0.8975,
+          "seconds": 64.96441674232483
+        },
+        {
+          "epoch": 15,
+          "train_loss": 0.030281249723661734,
+          "train_acc": 0.9913841022790439,
+          "val_acc": 0.9025,
+          "seconds": 65.74744319915771
+        },
+        {
+          "epoch": 16,
+          "train_loss": 0.01902149160811393,
+          "train_acc": 0.9947192884936076,
+          "val_acc": 0.8975,
+          "seconds": 67.65475130081177
+        },
+        {
+          "epoch": 17,
+          "train_loss": 0.014999323708831998,
+          "train_acc": 0.9966648137854364,
+          "val_acc": 0.9,
+          "seconds": 66.80429530143738
+        },
+        {
+          "epoch": 18,
+          "train_loss": 0.01766114826912082,
+          "train_acc": 0.9955530850472485,
+          "val_acc": 0.9025,
+          "seconds": 66.46591305732727
+        },
+        {
+          "epoch": 19,
+          "train_loss": 0.01885247544042265,
+          "train_acc": 0.9961089494163424,
+          "val_acc": 0.8975,
+          "seconds": 66.63154315948486
+        },
+        {
+          "epoch": 20,
+          "train_loss": 0.01792169686716429,
+          "train_acc": 0.9930516953863258,
+          "val_acc": 0.905,
+          "seconds": 66.46683239936829
+        }
+      ],
+      "best_epoch": 20,
+      "best_val_acc": 0.905
+    }
+  },
+  "selected_backbone": "resnet50",
+  "test": {
+    "accuracy_on_detected": 0.906,
+    "n_detected": 1000,
+    "accuracy_counting_detection_failures_as_wrong": 0.906,
+    "n_test": 1000,
+    "accuracy_excluding_test_images_with_train_duplicate": 0.9050505050505051,
+    "n_excluding_duplicates": 990,
+    "per_class_accuracy_on_detected": {
+      "heart": 0.93,
+      "oblong": 0.96,
+      "oval": 0.805,
+      "round": 0.885,
+      "square": 0.95
+    },
+    "confusion_rows_true_cols_pred": [
+      [
+        186,
+        4,
+        4,
+        4,
+        2
+      ],
+      [
+        3,
+        192,
+        4,
+        0,
+        1
+      ],
+      [
+        9,
+        6,
+        161,
+        18,
+        6
+      ],
+      [
+        7,
+        2,
+        9,
+        177,
+        5
+      ],
+      [
+        0,
+        1,
+        2,
+        7,
+        190
+      ]
+    ],
+    "classes": [
+      "heart",
+      "oblong",
+      "oval",
+      "round",
+      "square"
+    ],
+    "probabilities_file": "cnn_kaggle_test_probs.csv"
+  },
+  "published_reference": "up to 96.32 percent on this corpus (grd2024transfer)",
+  "model_files": {
+    "efficientnet_b0": "results/stage2/cache/cnn_efficientnet_b0.pt",
+    "resnet50": "results/stage2/cache/cnn_resnet50.pt"
+  },
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130"
+    },
+    "utc_time": "2026-10-17T22:26:26+00:00"
+  }
+}

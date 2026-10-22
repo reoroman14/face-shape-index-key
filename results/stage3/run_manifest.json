@@ -1,0 +1,86 @@
+{
+  "seed": 20261017,
+  "command": "python -m faceshape_pilot.stage3.run_stage3",
+  "steps": [
+    "faceshape_pilot.stage3.fairface",
+    "faceshape_pilot.stage3.extract_fairface",
+    "faceshape_pilot.stage3.part_a",
+    "faceshape_pilot.stage3.verdict"
+  ],
+  "part_b": "not run: RFW access not obtained",
+  "fairface": {
+    "repo": "HuggingFaceM4/FairFace",
+    "revision": "54d573cdb8b5af490ba8da9da2799628f6e5c496",
+    "padding": "1.25",
+    "shards": [
+      {
+        "path": "1.25/train-00000-of-00004-e715178553977907.parquet",
+        "size": 467720349,
+        "sha256": "9c27e70f0cf6f1ba54e5d7fcc7c69bd5b1c8342205796e9a9bb8f507125ef70c",
+        "verified_sha256": true
+      },
+      {
+        "path": "1.25/train-00001-of-00004-f38b58e3987f3fbf.parquet",
+        "size": 465770326,
+        "sha256": "fa253c53b3bee4a784314963e5579fa90ae7422a4990f72c4f2458b3e4e51692",
+        "verified_sha256": true
+      },
+      {
+        "path": "1.25/train-00002-of-00004-239e931aa9c3b3e6.parquet",
+        "size": 466479874,
+        "sha256": "ad65e7e2f34faf35cf5741a91f55397a9df0544df567bd1f7388d60dfe86dcf8",
+        "verified_sha256": true
+      },
+      {
+        "path": "1.25/train-00003-of-00004-847c279691a19548.parquet",
+        "size": 467699600,
+        "sha256": "caf5e1f5982d0206e7d3f48fff89c74740eeb3a57aebceef59fd6fc68a9ea7c2",
+        "verified_sha256": true
+      },
+      {
+        "path": "1.25/validation-00000-of-00001-09e3e67bb00ab4ec.parquet",
+        "size": 236824583,
+        "sha256": "ce47863c011f355ef7ab63d70420d9d4b36fce03cf1621a26597955da21968bb",
+        "verified_sha256": true
+      }
+    ]
+  },
+  "router_seconds": 1177.6,
+  "router_runtime": "MediaPipe Face Landmarker, CPU (TFLite XNNPACK); no GPU used in stage 3",
+  "model_sha256": {
+    "models/insightface/models/buffalo_l/1k3d68.onnx": "df5c06b8a0c12e422b2ed8947b8869faa4105387f199c477af038aa01f9a45cc",
+    "models/insightface/models/buffalo_l/2d106det.onnx": "f001b856447c413801ef5c42091ed0cd516fcd21f2d6b79635b1e733a7109dbf",
+    "models/insightface/models/buffalo_l/det_10g.onnx": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+    "models/insightface/models/buffalo_l/genderage.onnx": "4fde69b1c810857b88c64a335084f1c3fe8f01246c9a191b48c7bb756d6652fb",
+    "models/insightface/models/buffalo_l/w600k_r50.onnx": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+    "models/mediapipe/face_landmarker.task": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+  },
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130",
+      "pyarrow": "26.0.0"
+    },
+    "utc_time": "2026-10-18T19:52:34+00:00"
+  },
+  "outputs": [
+    "VERDICT.md",
+    "fairface_download.json",
+    "fairface_router_outputs.csv",
+    "landmark_failure_by_group.png",
+    "part_a.json",
+    "run_manifest.json",
+    "shape_by_group.png"
+  ]
+}

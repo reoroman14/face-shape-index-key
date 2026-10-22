@@ -1,0 +1,70 @@
+{
+  "seed": 20261017,
+  "command": "python -m faceshape_pilot.run_pilot",
+  "data_accounting": {
+    "lfw_images_ge2": 9164,
+    "lfw_identities_ge2": 1680,
+    "landmark_failed": 10,
+    "embedding_failed": 0,
+    "either_failed": 10,
+    "dropped_identity_below_2_after_failures_images": 3,
+    "analysis_images": 9151,
+    "analysis_identities": 1677
+  },
+  "model_sha256": {
+    "models/insightface/models/buffalo_l/1k3d68.onnx": "df5c06b8a0c12e422b2ed8947b8869faa4105387f199c477af038aa01f9a45cc",
+    "models/insightface/models/buffalo_l/2d106det.onnx": "f001b856447c413801ef5c42091ed0cd516fcd21f2d6b79635b1e733a7109dbf",
+    "models/insightface/models/buffalo_l/det_10g.onnx": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+    "models/insightface/models/buffalo_l/genderage.onnx": "4fde69b1c810857b88c64a335084f1c3fe8f01246c9a191b48c7bb756d6652fb",
+    "models/insightface/models/buffalo_l/w600k_r50.onnx": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+    "models/mediapipe/face_landmarker.task": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+  },
+  "mediapipe_model_url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+  "insightface_pack": "buffalo_l",
+  "embedder_runtime": {
+    "n_embed_ok": 9164,
+    "n_embed_failed": 0,
+    "seconds": 187.2,
+    "providers_in_use": {
+      "detection": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "recognition": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ]
+    },
+    "det_size": 320
+  },
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": null,
+      "torchvision": null
+    },
+    "utc_time": "2026-10-17T21:01:08+00:00"
+  },
+  "outputs": [
+    "VERDICT.md",
+    "consistency.json",
+    "consistency_topk.png",
+    "distribution.json",
+    "distribution.png",
+    "linear_probe_split.csv",
+    "partition_comparison.json",
+    "partition_recall_penetration.png",
+    "partition_split.csv",
+    "run_manifest.json"
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "measurement": "1_identity_consistency",
+  "seed": 20261017,
+  "dataset": "LFW (funneled), identities with >= 2 images, via sklearn.datasets.fetch_lfw_people",
+  "dataset_limitations": "LFW is demographically skewed (predominantly male, lighter-skinned, middle-aged public figures) and consists of news photographs of public figures. This is acceptable for a pilot that asks whether the routing mechanism works at all. It is not acceptable for the fairness analysis in the paper, which requires a demographically balanced set.",
+  "router": {
+    "landmarks": {
+      "forehead_width": [
+        54,
+        284
+      ],
+      "cheekbone_width": [
+        234,
+        454
+      ],
+      "jaw_width": [
+        172,
+        397
+      ],
+      "face_length": [
+        10,
+        152
+      ],
+      "jaw_angle_left_vertex_ramus_chin": [
+        172,
+        234,
+        152
+      ],
+      "jaw_angle_right_vertex_ramus_chin": [
+        397,
+        454,
+        152
+      ]
+    },
+    "features": [
+      "L_length_over_cheek",
+      "F_forehead_over_cheek",
+      "J_jaw_over_cheek",
+      "A_jaw_angle_deg"
+    ],
+    "standardisation": "robust: (x - median) / (IQR / 1.349), statistics over all images with landmarks",
+    "prototypes": {
+      "oval": [
+        0.5,
+        0.5,
+        -0.5,
+        0.5
+      ],
+      "round": [
+        -1.0,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "square": [
+        -1.0,
+        0.0,
+        1.0,
+        -1.0
+      ],
+      "rectangle": [
+        1.5,
+        0.0,
+        0.5,
+        -1.0
+      ],
+      "heart": [
+        0.0,
+        1.5,
+        -1.5,
+        0.0
+      ],
+      "diamond": [
+        0.5,
+        -1.5,
+        -1.0,
+        0.0
+      ],
+      "triangle": [
+        0.0,
+        -1.5,
+        1.5,
+        0.0
+      ]
+    },
+    "prototype_width": 1.0,
+    "softmax_temperature": 1.0,
+    "trained_on_identity": false
+  },
+  "embedding": "InsightFace buffalo_l ArcFace R50 (WebFace600K), L2-normalised, 512-d",
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130"
+    },
+    "utc_time": "2026-10-17T21:14:37+00:00"
+  },
+  "data_accounting": {
+    "lfw_images_ge2": 9164,
+    "lfw_identities_ge2": 1680,
+    "landmark_failed": 10,
+    "embedding_failed": 0,
+    "either_failed": 10,
+    "dropped_identity_below_2_after_failures_images": 3,
+    "analysis_images": 9151,
+    "analysis_identities": 1677
+  },
+  "n_identities": 1677,
+  "n_unordered_pairs": 6990,
+  "n_ordered_pairs": 13980,
+  "max_pairs_per_identity": 10,
+  "p_top1": 0.32718168812589415,
+  "p_top1_ci95": {
+    "low": 0.313500710497338,
+    "high": 0.34142891692999655
+  },
+  "cohen_kappa_top1": 0.17710068933462547,
+  "cohen_kappa_top1_ci95": {
+    "low": 0.16082034081997554,
+    "high": 0.19326663634085975
+  },
+  "chance_agreement_from_marginals": 0.18518417324429462,
+  "multi_probe": [
+    {
+      "k": 1,
+      "p_topk": 0.32718168812589415,
+      "p_topk_ci95": {
+        "low": 0.313500710497338,
+        "high": 0.34142891692999655
+      },
+      "mean_classes_searched": 1.0,
+      "mean_gallery_fraction_searched": 0.18362168412998933,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.1806063179546197,
+        "high": 0.18637081796207877
+      }
+    },
+    {
+      "k": 2,
+      "p_topk": 0.5291130185979971,
+      "p_topk_ci95": {
+        "low": 0.5166093783335362,
+        "high": 0.5429913647799047
+      },
+      "mean_classes_searched": 2.0,
+      "mean_gallery_fraction_searched": 0.3496110793491929,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.3467653997738821,
+        "high": 0.35246271993519646
+      }
+    },
+    {
+      "k": 3,
+      "p_topk": 0.6685979971387697,
+      "p_topk_ci95": {
+        "low": 0.6569500945615463,
+        "high": 0.6806447629030382
+      },
+      "mean_classes_searched": 3.0,
+      "mean_gallery_fraction_searched": 0.48385524757177634,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.48110248631179303,
+        "high": 0.4865229846631326
+      }
+    },
+    {
+      "k": 4,
+      "p_topk": 0.7783261802575108,
+      "p_topk_ci95": {
+        "low": 0.7674027393538189,
+        "high": 0.7887145548976257
+      },
+      "mean_classes_searched": 4.0,
+      "mean_gallery_fraction_searched": 0.6163390681444011,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.6131179285235927,
+        "high": 0.6193812993015255
+      }
+    },
+    {
+      "k": 5,
+      "p_topk": 0.8662374821173104,
+      "p_topk_ci95": {
+        "low": 0.858230472582321,
+        "high": 0.874064715313416
+      },
+      "mean_classes_searched": 5.0,
+      "mean_gallery_fraction_searched": 0.7531201746441727,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.750109676145099,
+        "high": 0.7558190865305549
+      }
+    },
+    {
+      "k": 6,
+      "p_topk": 0.9459227467811159,
+      "p_topk_ci95": {
+        "low": 0.94095263992807,
+        "high": 0.9509576383229948
+      },
+      "mean_classes_searched": 6.0,
+      "mean_gallery_fraction_searched": 0.8870818702397147,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 0.8855206881086348,
+        "high": 0.8884166938863136
+      }
+    },
+    {
+      "k": 7,
+      "p_topk": 1.0,
+      "p_topk_ci95": {
+        "low": 1.0,
+        "high": 1.0
+      },
+      "mean_classes_searched": 7.0,
+      "mean_gallery_fraction_searched": 1.0,
+      "mean_gallery_fraction_searched_ci95": {
+        "low": 1.0,
+        "high": 1.0
+      }
+    }
+  ],
+  "per_class": {
+    "oval": {
+      "n_ordered_pairs_with_probe_in_class": 4065,
+      "p_top1_given_probe_class": 0.41279212792127923,
+      "ci95": {
+        "low": 0.38675946697291663,
+        "high": 0.4368840585566663
+      },
+      "share_of_images": 0.3034641022839034
+    },
+    "round": {
+      "n_ordered_pairs_with_probe_in_class": 1720,
+      "p_top1_given_probe_class": 0.26395348837209304,
+      "ci95": {
+        "low": 0.2319615546598538,
+        "high": 0.294621678169292
+      },
+      "share_of_images": 0.11933122063162496
+    },
+    "square": {
+      "n_ordered_pairs_with_probe_in_class": 3080,
+      "p_top1_given_probe_class": 0.4090909090909091,
+      "ci95": {
+        "low": 0.37837744026567355,
+        "high": 0.43861803511753267
+      },
+      "share_of_images": 0.21068735657305213
+    },
+    "rectangle": {
+      "n_ordered_pairs_with_probe_in_class": 1147,
+      "p_top1_given_probe_class": 0.26503923278116825,
+      "ci95": {
+        "low": 0.21571002002263429,
+        "high": 0.30926163038839094
+      },
+      "share_of_images": 0.07977270243689215
+    },
+    "heart": {
+      "n_ordered_pairs_with_probe_in_class": 1465,
+      "p_top1_given_probe_class": 0.23754266211604094,
+      "ci95": {
+        "low": 0.1968843569194089,
+        "high": 0.279471318628839
+      },
+      "share_of_images": 0.10184679270025133
+    },
+    "diamond": {
+      "n_ordered_pairs_with_probe_in_class": 1050,
+      "p_top1_given_probe_class": 0.18095238095238095,
+      "ci95": {
+        "low": 0.14349361366654378,
+        "high": 0.21843792950422017
+      },
+      "share_of_images": 0.07463665173205114
+    },
+    "triangle": {
+      "n_ordered_pairs_with_probe_in_class": 1453,
+      "p_top1_given_probe_class": 0.2339986235375086,
+      "ci95": {
+        "low": 0.19435778852217783,
+        "high": 0.2749447499345378
+      },
+      "share_of_images": 0.11026117364222489
+    }
+  },
+  "pair_confusion_ordered": {
+    "classes": [
+      "oval",
+      "round",
+      "square",
+      "rectangle",
+      "heart",
+      "diamond",
+      "triangle"
+    ],
+    "rows_probe_cols_gallery": [
+      [
+        1678,
+        449,
+        534,
+        307,
+        463,
+        297,
+        337
+      ],
+      [
+        449,
+        454,
+        374,
+        45,
+        155,
+        86,
+        157
+      ],
+      [
+        534,
+        374,
+        1260,
+        192,
+        280,
+        164,
+        276
+      ],
+      [
+        307,
+        45,
+        192,
+        304,
+        79,
+        92,
+        128
+      ],
+      [
+        463,
+        155,
+        280,
+        79,
+        348,
+        73,
+        67
+      ],
+      [
+        297,
+        86,
+        164,
+        92,
+        73,
+        190,
+        148
+      ],
+      [
+        337,
+        157,
+        276,
+        128,
+        67,
+        148,
+        340
+      ]
+    ]
+  },
+  "notes": [
+    "p_top1 is computed over unordered pairs; p_topk, per-class values and kappa over ordered pairs (both directions).",
+    "p_top1_given_probe_class equals the specific (positive) agreement for that class because both directions are counted.",
+    "mean_classes_searched is exactly k under fixed top-k multi-probe; mean_gallery_fraction_searched is the cost in images.",
+    "CIs: 95% percentile bootstrap over identities, pair sample held fixed."
+  ]
+}

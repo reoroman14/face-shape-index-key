@@ -1,0 +1,116 @@
+{
+  "seed": 20261017,
+  "command": "python -m faceshape_pilot.stage4.run_stage4",
+  "steps": [
+    "faceshape_pilot.stage4.extract_rfw",
+    "faceshape_pilot.stage4.part_b",
+    "faceshape_pilot.stage4.verdict"
+  ],
+  "provenance": {
+    "source_dataset": "RFW (Racial Faces in-the-Wild), test subsets only",
+    "derived_from": "MS-Celeb-1M, withdrawn by its creator (Microsoft) in April 2019",
+    "access": "granted in writing by Mei Wang (Beijing University of Posts and Telecommunications) on 2026-10-20, in response to a request from Applied Science Private University",
+    "obtained_from": "the Google Drive link supplied by the maintainer, not a mirror",
+    "downloaded": "the four test subsets only (Caucasian, Asian, Indian, African); the MS1M-wo-RFW and BUPT training sets distributed alongside them were not downloaded",
+    "verification": "unpacked tree verified file by file against the official counts (40,607 images, 11,429 identities) before use; re-verified by faceshape_pilot.stage4.rfw on every run",
+    "maintainer_readme": "data/rfw/readme.txt",
+    "maintainer_readme_sha256": "fbfa5fe0759b76ebb6e5455a93ba965c41f647bd56101df6f85eb1fe776c0be2"
+  },
+  "rfw_dir": "data/rfw/images",
+  "rfw_expected": {
+    "Caucasian": [
+      10196,
+      2958
+    ],
+    "Asian": [
+      9688,
+      2492
+    ],
+    "Indian": [
+      10308,
+      2984
+    ],
+    "African": [
+      10415,
+      2995
+    ]
+  },
+  "rfw_counts_verified": {
+    "Caucasian": {
+      "images": 10196,
+      "identities": 2958,
+      "identities_ge2": 2958,
+      "empty_folders_skipped": [
+        "Caucasian/m.0g5ty_"
+      ]
+    },
+    "Asian": {
+      "images": 9688,
+      "identities": 2492,
+      "identities_ge2": 2492,
+      "empty_folders_skipped": []
+    },
+    "Indian": {
+      "images": 10308,
+      "identities": 2984,
+      "identities_ge2": 2984,
+      "empty_folders_skipped": []
+    },
+    "African": {
+      "images": 10415,
+      "identities": 2995,
+      "identities_ge2": 2995,
+      "empty_folders_skipped": []
+    }
+  },
+  "step0": {
+    "groups": {
+      "Caucasian": 0.975,
+      "Asian": 0.975,
+      "Indian": 0.99,
+      "African": 0.99
+    },
+    "lfw_reference": {
+      "n_landmark_ok": 9154,
+      "n_images": 9164,
+      "rate": 0.9989087734613706,
+      "source": "results/pilot/cache/router_meta.json"
+    }
+  },
+  "router_seconds": 264.3,
+  "router_runtime": "MediaPipe Face Landmarker, CPU (TFLite XNNPACK); ArcFace not run in stage 4",
+  "model_sha256": {
+    "models/insightface/models/buffalo_l/1k3d68.onnx": "df5c06b8a0c12e422b2ed8947b8869faa4105387f199c477af038aa01f9a45cc",
+    "models/insightface/models/buffalo_l/2d106det.onnx": "f001b856447c413801ef5c42091ed0cd516fcd21f2d6b79635b1e733a7109dbf",
+    "models/insightface/models/buffalo_l/det_10g.onnx": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+    "models/insightface/models/buffalo_l/genderage.onnx": "4fde69b1c810857b88c64a335084f1c3fe8f01246c9a191b48c7bb756d6652fb",
+    "models/insightface/models/buffalo_l/w600k_r50.onnx": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+    "models/mediapipe/face_landmarker.task": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+  },
+  "environment": {
+    "python": "3.14.8",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "pillow": "13.0.0",
+      "opencv-python-headless": "5.0.0.93",
+      "mediapipe": "1.1.1",
+      "insightface": "2.1",
+      "onnxruntime-gpu": "1.31.0",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130",
+      "pyarrow": "26.0.0"
+    },
+    "utc_time": "2026-10-21T21:54:07+00:00"
+  },
+  "outputs": [
+    "VERDICT.md",
+    "landmark_failure_by_group.png",
+    "part_b.json",
+    "stability_by_group.png",
+    "step0.json"
+  ]
+}
